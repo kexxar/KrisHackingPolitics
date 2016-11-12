@@ -10,7 +10,7 @@ namespace KMMOpenNews
 		public RegistartionPage()
 		{
 			InitializeComponent();
-			BindingContext = new RegistartionPageViewModel(this, UserTypePicker, UserNameEntry, EmailEntry);
+			BindingContext = new RegistartionPageViewModel(this, UserTypePicker, UserNameEntry, EmailEntry, PasswordEntry, PasswordConfirmationEntry);
 
 			UserTypePicker.Items.Add("User");
 			UserTypePicker.Items.Add("Journalist");

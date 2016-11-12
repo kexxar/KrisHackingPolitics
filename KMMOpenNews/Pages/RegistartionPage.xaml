@@ -19,6 +19,8 @@
 
 			    <StackLayout
 					Orientation="Horizontal"
+					HorizontalOptions="CenterAndExpand"
+					VerticalOptions="CenterAndExpand"
 					Padding="5">
 					<Label
 						WidthRequest="150"
@@ -31,6 +33,8 @@
 				</StackLayout>
 				<StackLayout
 					Orientation="Horizontal"
+					HorizontalOptions="CenterAndExpand"
+					VerticalOptions="CenterAndExpand"
 					Padding="5">
 				    <Label
 						WidthRequest="150"
@@ -44,6 +48,8 @@
 				</StackLayout>
 				<StackLayout
 					Orientation="Horizontal"
+					HorizontalOptions="CenterAndExpand"
+					VerticalOptions="CenterAndExpand"
 					Padding="5">
 				    <Label
 						WidthRequest="150"
@@ -54,10 +60,43 @@
 						WidthRequest="150"
 						Placeholder="email">
 				    </Entry>
-				</StackLayout>			
+				</StackLayout>
 
 				<StackLayout
-					Padding="30">
+					Orientation="Horizontal"
+					HorizontalOptions="CenterAndExpand"
+					VerticalOptions="CenterAndExpand"
+					Padding="5">
+				    <Label
+						WidthRequest="150"
+						Text="Password:">
+				    </Label>
+				    <Entry
+						x:Name="PasswordEntry"
+						WidthRequest="150"
+						IsPassword="true">
+				    </Entry>
+				</StackLayout>	
+
+				<StackLayout
+					Orientation="Horizontal"
+					HorizontalOptions="CenterAndExpand"
+					VerticalOptions="CenterAndExpand"
+					Padding="5">
+				    <Label
+						WidthRequest="150"
+						Text="Confirm password:">
+				    </Label>
+				    <Entry
+						x:Name="PasswordConfirmationEntry"
+						WidthRequest="150"
+						IsPassword="true">
+				    </Entry>
+				</StackLayout>	
+				<StackLayout
+					Padding="10"
+					HorizontalOptions="CenterAndExpand"
+					VerticalOptions="CenterAndExpand">
 				<Button
 					x:Name="SingUpButton"
 					Command="{Binding SingUpClicked}"	
