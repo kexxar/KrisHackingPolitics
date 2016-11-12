@@ -22,6 +22,8 @@ namespace KMMOpenNewsBackend.Models
 
         public virtual ICollection<UserComment> UserComments { get; set; }
 
+        public virtual ICollection<UserScore> GivenScores { get; set; }
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager, string authenticationType)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
@@ -36,6 +38,7 @@ namespace KMMOpenNewsBackend.Models
         public DbSet<UserType> UserTypes { get; set; }
         public DbSet<NewsPost> NewsPosts { get; set; }
         public DbSet<UserComment> UserComments { get; set; }
+        public DbSet<UserScore> UserScores { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
@@ -49,6 +52,8 @@ namespace KMMOpenNewsBackend.Models
             //modelBuilder.Entity<UserComment>().HasRequired(c => c.User).WithRequiredDependent().WillCascadeOnDelete(false);
             //modelBuilder.Entity<NewsPost>().HasRequired(n => n.
             modelBuilder.Entity<UserComment>().HasRequired(c => c.User).WithMany().WillCascadeOnDelete(false);
+            modelBuilder.Entity<UserScore>().HasRequired(s => s.Post).WithMany().WillCascadeOnDelete(false);
+            modelBuilder.Entity<UserScore>().HasRequired(s => s.User).WithMany().WillCascadeOnDelete(false);
             modelBuilder.Entity<NewsPost>().Property(f => f.NewsDate).HasColumnType("datetime2").HasPrecision(0);
             modelBuilder.Entity<UserComment>().Property(f => f.CommentDate).HasColumnType("datetime2").HasPrecision(0);
         }

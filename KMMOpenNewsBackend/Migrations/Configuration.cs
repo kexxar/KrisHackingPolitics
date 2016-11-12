@@ -7,6 +7,8 @@ namespace KMMOpenNewsBackend.Migrations
     using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
+    using System.Data.Entity.Validation;
+    using System.Diagnostics;
     using System.Linq;
 
     internal sealed class Configuration : DbMigrationsConfiguration<KMMOpenNewsBackend.Models.ApplicationDbContext>
@@ -19,7 +21,7 @@ namespace KMMOpenNewsBackend.Migrations
 
         protected override void Seed(KMMOpenNewsBackend.Models.ApplicationDbContext context)
         {
-
+            try { 
             Console.WriteLine("starting seed");
             //  This method will be called after migrating to the latest version.
 
@@ -48,6 +50,7 @@ namespace KMMOpenNewsBackend.Migrations
             };
             Console.WriteLine("update user types");
             userTypes.ForEach(x => context.UserTypes.AddOrUpdate(p => p.Id, x));
+            context.SaveChanges();
 
             //var user = context.Users.First(x => x.Email.Equals("keravica@gmail.com"));
             ApplicationUser user = null;
@@ -85,19 +88,36 @@ namespace KMMOpenNewsBackend.Migrations
             //    User = user
             //};
 
-            Console.WriteLine("create new post");
-            var post = new NewsPost
-            {
-                Body = "nvad jashjavh  biaev ",
-                Id = 1,
-                NewsDate = DateTime.Now,
-                NewsType = "Politics",
-                Scores = new List<UserScore> { new UserScore { Score=1, User = user } },
-                User = user,
-                Title = "BlaBla"
-            };
+            //Console.WriteLine("create new post");
+            //var post = new NewsPost
+            //{
+            //    Body = "nvad jashjavh  biaev ",
+            //    Id = 1,
+            //    NewsDate = DateTime.Now,
+            //    NewsType = "Politics",
+            //    //Scores = new List<UserScore> { new UserScore { Score = 1, User = user, Post = this } },
+            //    User = user,
+            //    Title = "BlaBla"
+            //};
+            //context.NewsPosts.AddOrUpdate(p=>p.Id, post);
+            //context.SaveChanges();
+            //post.Scores.Add(new UserScore { Score = 1, User = user, Post = post });
 
-            context.NewsPosts.AddOrUpdate(p=>p.Id, post);
+            //var score = new UserScore { Score = 1, User = user, Post = post };
+            //context.UserScores.AddOrUpdate(score);
+        }
+            catch (DbEntityValidationException dbEx)
+            {
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        Trace.TraceInformation("Property: {0} Error: {1}",
+                                                validationError.PropertyName,
+                                                validationError.ErrorMessage);
+                    }
+                }
+            }
         }
     }
 }

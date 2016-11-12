@@ -7,13 +7,13 @@ namespace KMMOpenNewsBackend.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class InitialCreate : IMigrationMetadata
+    public sealed partial class InitialCreate3 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreate));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreate3));
         
         string IMigrationMetadata.Id
         {
-            get { return "201611120349366_InitialCreate"; }
+            get { return "201611121814103_InitialCreate3"; }
         }
         
         string IMigrationMetadata.Source

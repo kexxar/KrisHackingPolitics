@@ -55,7 +55,7 @@ namespace KMMOpenNewsBackend.Models
         [Required]
         public DateTime NewsDate { get; set; } = DateTime.MinValue;
 
-        [Required]
+        //[Required]
         public string UserId { get; set; }
         [ForeignKey("UserId")]
         public virtual ApplicationUser User { get; set; }

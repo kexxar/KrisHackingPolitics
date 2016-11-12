@@ -11,12 +11,18 @@ namespace KMMOpenNewsBackend.Models
     public class UserScore
     {
         [Key]
-        public string Id { get; set; }
+        public int Id { get; set; }
 
         [ForeignKey("UserId")]
         public virtual ApplicationUser User { get; set; }
         [Required]
         public string UserId { get; set; }
+
+        [ForeignKey("PostId")]
+        public virtual NewsPost Post { get; set; }
+        [Required]
+        public int PostId { get; set; }
+
         [Required]
         public byte Score { get; set; } = 0;
     }

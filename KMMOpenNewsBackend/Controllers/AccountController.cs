@@ -18,6 +18,8 @@ using KMMOpenNewsBackend.Providers;
 using KMMOpenNewsBackend.Results;
 using System.Linq;
 using System.Data.Entity;
+using KMMOpenNewsBackend.Models.DTO;
+//using System.Data.Entity.Migrations;
 
 namespace KMMOpenNewsBackend.Controllers
 {
@@ -99,6 +101,46 @@ namespace KMMOpenNewsBackend.Controllers
             }
         }
 
+        [Route("NewArticle")]
+        public async Task<IHttpActionResult> PostNewArticle(NewsPost post) {
+            try
+            {
+                //var user = RequestContext.Principal as ApplicationUser;
+                //var user = UserManager
+                var userId = User.Identity.GetUserId();
+                //var newPost = new NewsPost
+                //{
+                //    Body = "lksajdka",
+                //    NewsDate = DateTime.Now,
+                //    NewsType = "type",
+                //    Title = "title",
+                //    User = user
+                //};
+                //db.NewsPosts.Add(newPost);
+                //db.SaveChanges();
+                //return Ok();
+
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+                if (post.User == null || post.UserId == null) {
+                    //post.User = userId;
+                    post.UserId = userId;
+                }
+
+                db.NewsPosts.Add(post);
+                await db.SaveChangesAsync();
+
+                //return CreatedAtRoute("DefaultApi", new { id = post.Id }, post);
+                return Ok("New post added");
+            }
+            catch (Exception e) {
+                Console.WriteLine(e);
+                return Ok();
+            }
+        }
+
         [Route("GetNews")]
         [OverrideAuthentication]
         [AllowAnonymous]
@@ -111,6 +153,55 @@ namespace KMMOpenNewsBackend.Controllers
                 return db.NewsPosts;
             }
             //var news = db.NewsPosts
+        }
+
+        [Route("GetLatesNews")]
+        [OverrideAuthentication]
+        [AllowAnonymous]
+        public async Task<IQueryable<NewsPost>> GetLatestNews() {
+            if (User != null && User.Identity != null)
+            {
+                return db.NewsPosts.Include(x => x.User).Include(x => x.UserComments).OrderByDescending(n => n.NewsDate).Take(3);
+            }
+            else
+            {
+                return db.NewsPosts.OrderByDescending(n => n.NewsDate).Take(3);
+            }
+        }
+
+        //api/Account/SetupData
+        [Route("SetupData")]
+        [AcceptVerbs("GET", "POST")]
+        [OverrideAuthentication]
+        [AllowAnonymous]
+        public async Task<IHttpActionResult> SetupData()
+        {
+            try
+            {
+                var user = db.Users.First(x => x.Email.Equals("keravica@gmail.com"));
+                var post = new NewsPost
+                {
+                    Body = "nvad jashjavh  biaev ",
+                    //Id = 1,
+                    NewsDate = DateTime.Now,
+                    NewsType = "Politics",
+                    //Scores = new List<UserScore> { new UserScore { Score = 1, User = user, Post = this } },
+                    User = user,
+                    Title = "BlaBla"
+                };
+                db.NewsPosts.Add(post);
+                db.SaveChanges();
+                //db.NewsPosts.AddOrUpdate(p => p.Id, post);
+                //db.SaveChanges();
+
+                var score = new UserScore { Score = 1, User = user, Post = post };
+                //db.UserScores.AddOrUpdate(score);
+                //db.SaveChanges();
+            }
+            catch (Exception e) {
+                Console.WriteLine(e);
+            }
+            return Ok();
         }
 
         // POST api/Account/Logout
