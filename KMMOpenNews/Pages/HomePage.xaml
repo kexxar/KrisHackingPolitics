@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+		xmlns="http://xamarin.com/schemas/2014/forms" 
+		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+		x:Class="KMMOpenNews.HomePage">
+		<StackLayout
+			Padding="10,50,10,10"
+			HorizontalOptions="FillAndExpand"
+			Orientation="Vertical"
+			VerticalOptions="FillAndExpand">
+
+<!--	App logo and name-->
+			<Label
+				HorizontalOptions="CenterAndExpand"
+				Text="KMMOpenNews"
+				FontSize="50">
+			</Label>
+
+<!--		News panel-->
+			<StackLayout
+				Padding="30"
+				HorizontalOptions="CenterAndExpand"
+				Orientation="Horizontal">
+				<Button
+					TextColor="White"
+					WidthRequest="150"
+					HeightRequest="50"
+					BackgroundColor="#4925FF"
+					FontSize="20"
+					Text="NEW">
+				</Button>
+				<Button
+					TextColor="White"
+					WidthRequest="150"
+					HeightRequest="50"
+					BackgroundColor="#FF530D"
+					FontSize="20"
+					Text="POLITICS">
+				</Button>
+				<Button
+					TextColor="White"
+					WidthRequest="150"
+					HeightRequest="50"
+					BackgroundColor="#22E869"
+					FontSize="20"
+					Text="SOCIETY">
+				</Button>
+				<Button
+					TextColor="White"
+				    WidthRequest="150"
+					HeightRequest="50"
+					BackgroundColor="Black"
+					FontSize="20"
+					Text="CHRONICLE">
+				</Button>
+			</StackLayout>
+<!--			Top news panel-->
+			<StackLayout
+				Padding="10, 10, 50, 10"
+				Orientation="Vertical">
+<!--			Most popular news-->
+				<StackLayout
+					HorizontalOptions="CenterAndExpand"
+					BackgroundColor="Aqua">
+
+			    </StackLayout>
+<!--			Les popular news-->
+			    <StackLayout
+					Orientation="Horizontal">
+					<StackLayout
+						BackgroundColor="Fuchsia">
+					</StackLayout>
+
+					<StackLayout
+						BackgroundColor="Lime">
+					</StackLayout>
+					
+				
+				</StackLayout>
+<!--			Add News-->
+			<Image
+			  x:Name="Add"
+			  HorizontalOptions="End"				
+			  WidthRequest="100"
+			  HeightRequest="100">
+			</Image>
+
+			</StackLayout>
+	
+		</StackLayout>
+	
+	<ContentPage.Content>
+	</ContentPage.Content>
+</ContentPage>
