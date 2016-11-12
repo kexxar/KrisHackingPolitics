@@ -33,9 +33,17 @@
       <DependentUpon>RegistartionPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\RegistartionPageViewModel.cs" />
+
+    <Compile Include="$(MSBuildThisFileDirectory)Model\Institucija.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\SearchService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interface\ISearchService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Constants.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Pages\" />
     <Folder Include="$(MSBuildThisFileDirectory)ViewModels\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Model\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Services\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Interface\" />
   </ItemGroup>
 </Project>
