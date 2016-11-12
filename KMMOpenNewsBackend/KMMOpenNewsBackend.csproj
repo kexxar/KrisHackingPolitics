@@ -231,12 +231,25 @@
     <Compile Include="Migrations\201611121114193_InitialCreate4.Designer.cs">
       <DependentUpon>201611121114193_InitialCreate4.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611121149026_InitialCreate5.cs" />
+    <Compile Include="Migrations\201611121149026_InitialCreate5.Designer.cs">
+      <DependentUpon>201611121149026_InitialCreate5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611121202590_InitialCreate6.cs" />
+    <Compile Include="Migrations\201611121202590_InitialCreate6.Designer.cs">
+      <DependentUpon>201611121202590_InitialCreate6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611121737266_InitialCreate7.cs" />
+    <Compile Include="Migrations\201611121737266_InitialCreate7.Designer.cs">
+      <DependentUpon>201611121737266_InitialCreate7.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\NewsPost.cs" />
     <Compile Include="Models\UserComment.cs" />
+    <Compile Include="Models\UserScore.cs" />
     <Compile Include="Models\UserType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
@@ -325,12 +338,15 @@
     <EmbeddedResource Include="Migrations\201611121114193_InitialCreate4.resx">
       <DependentUpon>201611121114193_InitialCreate4.cs</DependentUpon>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\KMMOpenNews.SharedModels\KMMOpenNews.SharedModels.csproj">
-      <Project>{286c5a55-6472-472e-b5ca-ecf5e5ae0575}</Project>
-      <Name>KMMOpenNews.SharedModels</Name>
-    </ProjectReference>
+    <EmbeddedResource Include="Migrations\201611121149026_InitialCreate5.resx">
+      <DependentUpon>201611121149026_InitialCreate5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611121202590_InitialCreate6.resx">
+      <DependentUpon>201611121202590_InitialCreate6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611121737266_InitialCreate7.resx">
+      <DependentUpon>201611121737266_InitialCreate7.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -350,7 +366,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>7038</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:7038/</IISUrl>
+          <IISUrl>http://localhost:8080</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

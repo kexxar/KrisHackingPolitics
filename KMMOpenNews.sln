@@ -8,15 +8,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KMMOpenNews.iOS", "iOS\KMMO
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KMMOpenNews.Droid", "Droid\KMMOpenNews.Droid.csproj", "{A31EF1A6-73B2-452B-B655-5349CCD197D8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KMMOpenNewsWebApi", "KMMOpenNewsWebApi\KMMOpenNewsWebApi.csproj", "{D03B45AB-21F4-4B89-8B24-B10D2ED48694}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KMMOpenNews.SharedModels", "KMMOpenNews.SharedModels\KMMOpenNews.SharedModels.csproj", "{286C5A55-6472-472E-B5CA-ECF5E5AE0575}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KMMOpenNewsBackend", "KMMOpenNewsBackend\KMMOpenNewsBackend.csproj", "{6B6111E8-17DA-4AAE-A960-5596D906AEA0}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		KMMOpenNews\KMMOpenNews.projitems*{6fa81b78-7f58-4595-9be6-999631ad07e6}*SharedItemsImports = 4
 		KMMOpenNews\KMMOpenNews.projitems*{bdb601aa-3a4d-459e-838b-21d8c1ba98cb}*SharedItemsImports = 13
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -52,30 +47,6 @@ Global
 		{A31EF1A6-73B2-452B-B655-5349CCD197D8}.Release|iPhone.Build.0 = Release|Any CPU
 		{A31EF1A6-73B2-452B-B655-5349CCD197D8}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{A31EF1A6-73B2-452B-B655-5349CCD197D8}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
-		{D03B45AB-21F4-4B89-8B24-B10D2ED48694}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D03B45AB-21F4-4B89-8B24-B10D2ED48694}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D03B45AB-21F4-4B89-8B24-B10D2ED48694}.Debug|iPhone.ActiveCfg = Debug|Any CPU
-		{D03B45AB-21F4-4B89-8B24-B10D2ED48694}.Debug|iPhone.Build.0 = Debug|Any CPU
-		{D03B45AB-21F4-4B89-8B24-B10D2ED48694}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
-		{D03B45AB-21F4-4B89-8B24-B10D2ED48694}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
-		{D03B45AB-21F4-4B89-8B24-B10D2ED48694}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D03B45AB-21F4-4B89-8B24-B10D2ED48694}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D03B45AB-21F4-4B89-8B24-B10D2ED48694}.Release|iPhone.ActiveCfg = Release|Any CPU
-		{D03B45AB-21F4-4B89-8B24-B10D2ED48694}.Release|iPhone.Build.0 = Release|Any CPU
-		{D03B45AB-21F4-4B89-8B24-B10D2ED48694}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
-		{D03B45AB-21F4-4B89-8B24-B10D2ED48694}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
-		{286C5A55-6472-472E-B5CA-ECF5E5AE0575}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{286C5A55-6472-472E-B5CA-ECF5E5AE0575}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{286C5A55-6472-472E-B5CA-ECF5E5AE0575}.Debug|iPhone.ActiveCfg = Debug|Any CPU
-		{286C5A55-6472-472E-B5CA-ECF5E5AE0575}.Debug|iPhone.Build.0 = Debug|Any CPU
-		{286C5A55-6472-472E-B5CA-ECF5E5AE0575}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
-		{286C5A55-6472-472E-B5CA-ECF5E5AE0575}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
-		{286C5A55-6472-472E-B5CA-ECF5E5AE0575}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{286C5A55-6472-472E-B5CA-ECF5E5AE0575}.Release|Any CPU.Build.0 = Release|Any CPU
-		{286C5A55-6472-472E-B5CA-ECF5E5AE0575}.Release|iPhone.ActiveCfg = Release|Any CPU
-		{286C5A55-6472-472E-B5CA-ECF5E5AE0575}.Release|iPhone.Build.0 = Release|Any CPU
-		{286C5A55-6472-472E-B5CA-ECF5E5AE0575}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
-		{286C5A55-6472-472E-B5CA-ECF5E5AE0575}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 		{6B6111E8-17DA-4AAE-A960-5596D906AEA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6B6111E8-17DA-4AAE-A960-5596D906AEA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6B6111E8-17DA-4AAE-A960-5596D906AEA0}.Debug|iPhone.ActiveCfg = Debug|Any CPU

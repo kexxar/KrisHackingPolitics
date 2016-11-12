@@ -21,29 +21,46 @@ namespace KMMOpenNewsBackend.Models
         public string Body { get; set; }
         //[Required]
         //public IEnumerable<int> Scores { get; set; }
-        [Required]
-        public string Scores { get; set; }
+        //[Required]
+        //public int Score { get; set; }
         [Required]
         public string NewsType { get; set; }
+        //[NotMapped]
+        //[JsonIgnore]
+        //public float TotalScore {
+        //    get {
+        //        if (string.IsNullOrWhiteSpace(Scores)) {
+        //            return 0f;
+        //        }
+        //        var sum = 0f;
+        //        Scores.ForEach(c => {
+        //            sum += (float)char.GetNumericValue(c);
+        //        });
+        //        return sum / Scores.Count();
+        //    }
+        //}
+        
         [NotMapped]
         [JsonIgnore]
-        public float TotalScore {
+        public int TotalScore {
             get {
-                if (string.IsNullOrWhiteSpace(Scores)) {
-                    return 0f;
+                int score = 0;
+                if (Scores != null) {
+                    Scores.ForEach(x => score += x.Score);
                 }
-                var sum = 0f;
-                Scores.ForEach(c => {
-                    sum += (float)char.GetNumericValue(c);
-                });
-                return sum / Scores.Count();
+                return score;
             }
         }
+
+        [Required]
+        public DateTime NewsDate { get; set; } = DateTime.MinValue;
 
         [Required]
         public string UserId { get; set; }
         [ForeignKey("UserId")]
         public virtual ApplicationUser User { get; set; }
+
+        public virtual ICollection<UserScore> Scores { get; set; }
 
         public virtual ICollection<UserComment> UserComments { get; set; }
     }

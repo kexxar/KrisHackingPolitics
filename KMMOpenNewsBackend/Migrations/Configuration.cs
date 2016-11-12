@@ -19,6 +19,8 @@ namespace KMMOpenNewsBackend.Migrations
 
         protected override void Seed(KMMOpenNewsBackend.Models.ApplicationDbContext context)
         {
+
+            Console.WriteLine("starting seed");
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
@@ -32,12 +34,19 @@ namespace KMMOpenNewsBackend.Migrations
             //    );
             //
 
+            //Initialize the debugger
+            if (System.Diagnostics.Debugger.IsAttached == false)
+            {
+                System.Diagnostics.Debugger.Launch();
+            }
+
             var userTypes = new List<UserType>
             {
                 new UserType { Id = 1, Name = "Admin" },
                 new UserType { Id = 2, Name = "User" },
                 new UserType { Id = 3, Name = "Journalist" },
             };
+            Console.WriteLine("update user types");
             userTypes.ForEach(x => context.UserTypes.AddOrUpdate(p => p.Id, x));
 
             //var user = context.Users.First(x => x.Email.Equals("keravica@gmail.com"));
@@ -58,6 +67,7 @@ namespace KMMOpenNewsBackend.Migrations
                 //    PasswordHash = password,
                 //    Email = "keravica@gmail.com"
                 //});
+                Console.WriteLine("user is null");
 
                 var userStore = new UserStore<ApplicationUser>(context);
                 var userManager = new UserManager<ApplicationUser>(userStore);
@@ -67,17 +77,27 @@ namespace KMMOpenNewsBackend.Migrations
                 user = userToInsert;
             }
 
-            var post = new NewsPost {
-                Body = "ballabladklasblsb",
-                NewsType = "politics",
-                //Scores = new List<int> { 5, 5, 5, 4, 5, 3, 4 },
-                Scores = "554554434325",
-                Title = "Test title",
-                User = user
+            //var post = new NewsPost {
+            //    Body = "ballabladklasblsb",
+            //    NewsType = "politics",
+            //    Scores = "554554434325",
+            //    Title = "Test title",
+            //    User = user
+            //};
+
+            Console.WriteLine("create new post");
+            var post = new NewsPost
+            {
+                Body = "nvad jashjavh  biaev ",
+                Id = 1,
+                NewsDate = DateTime.Now,
+                NewsType = "Politics",
+                Scores = new List<UserScore> { new UserScore { Score=1, User = user } },
+                User = user,
+                Title = "BlaBla"
             };
 
-
-            context.NewsPosts.AddOrUpdate(post);
+            context.NewsPosts.AddOrUpdate(p=>p.Id, post);
         }
     }
 }

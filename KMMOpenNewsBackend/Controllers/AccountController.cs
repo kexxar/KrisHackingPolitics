@@ -79,7 +79,7 @@ namespace KMMOpenNewsBackend.Controllers
             {
                 //var count = db.Users.Count();
                 var details = new List<UserInfoViewModel>();
-                var users = await db.Users.Include(x => x.UserType).Include(x => x.NewsPosts).Include(x=>x.UserComments).ToListAsync();
+                var users = await db.Users.Include(x => x.UserType).Include(x => x.NewsPosts).Include(x => x.UserComments).ToListAsync();
                 return users;
                 //foreach (var user in users)
                 //{
@@ -97,6 +97,20 @@ namespace KMMOpenNewsBackend.Controllers
                 Console.WriteLine(e);
                 return null;
             }
+        }
+
+        [Route("GetNews")]
+        [OverrideAuthentication]
+        [AllowAnonymous]
+        public async Task<IQueryable<NewsPost>> GetNews() {
+            if (User != null && User.Identity != null)
+            {
+                return db.NewsPosts.Include(x => x.User).Include(x => x.UserComments);
+            }
+            else {
+                return db.NewsPosts;
+            }
+            //var news = db.NewsPosts
         }
 
         // POST api/Account/Logout
