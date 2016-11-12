@@ -4,8 +4,8 @@
 		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
 		x:Class="KMMOpenNews.HomePage">
 		<StackLayout
-			Padding="10,50,10,10"
-			HorizontalOptions="FillAndExpand"
+			Padding="5,5,5,5"
+			HorizontalOptions="CenterAndExpand"
 			Orientation="Vertical"
 			VerticalOptions="FillAndExpand">
 
@@ -13,44 +13,44 @@
 			<Label
 				HorizontalOptions="CenterAndExpand"
 				Text="KMMOpenNews"
-				FontSize="50">
+				FontSize="30">
 			</Label>
 
 <!--		News panel-->
 			<StackLayout
-				Padding="30"
+				Padding="5"
 				HorizontalOptions="CenterAndExpand"
 				Orientation="Horizontal">
 				<Button
 					TextColor="White"
-					WidthRequest="150"
-					HeightRequest="50"
+					WidthRequest="80"
+					HeightRequest="40"
 					BackgroundColor="#4925FF"
-					FontSize="20"
+					FontSize="10"
 					Text="NEW">
 				</Button>
 				<Button
 					TextColor="White"
-					WidthRequest="150"
-					HeightRequest="50"
+					WidthRequest="80"
+					HeightRequest="40"
 					BackgroundColor="#FF530D"
-					FontSize="20"
+					FontSize="10"
 					Text="POLITICS">
 				</Button>
 				<Button
 					TextColor="White"
-					WidthRequest="150"
-					HeightRequest="50"
+					WidthRequest="80"
+					HeightRequest="40"
 					BackgroundColor="#22E869"
-					FontSize="20"
+					FontSize="10"
 					Text="SOCIETY">
 				</Button>
 				<Button
 					TextColor="White"
-				    WidthRequest="150"
-					HeightRequest="50"
+				    WidthRequest="80"
+					HeightRequest="40"
 					BackgroundColor="Black"
-					FontSize="20"
+					FontSize="10"
 					Text="CHRONICLE">
 				</Button>
 			</StackLayout>
@@ -81,8 +81,8 @@
 			<Image
 			  x:Name="Add"
 			  HorizontalOptions="End"				
-			  WidthRequest="100"
-			  HeightRequest="100">
+			  WidthRequest="50"
+			  HeightRequest="50">
 			</Image>
 
 			</StackLayout>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+		xmlns="http://xamarin.com/schemas/2014/forms" 
+		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+		x:Class="KMMOpenNews.NewsListPage">
+	<ContentPage.Content>
+		<Label
+			x:Name="NewsType"
+			Text="{Binding NewsType}"
+			HorizontalOptions="CenterAndExpand">
+		</Label>
+		<ListView
+			x:Name="NewsList"
+			HorizontalOptions="FillAndExpand"
+			VerticalOptions="FillAndExpand">
+			<ListView.ItemTemplate>
+				<DataTemplate>
+					<ViewCell>
+						<StackLayout
+							Orientation="Vertical">
+							<StackLayout
+								Orientation="Horizontal">
+								<Label
+									x:Name="Title"
+									Text="{Binding Title}">
+								</Label>
+								<Image
+									WidthRequest="30"
+									HeightRequest="30"
+									Source="star.png">
+								</Image>
+								<Lable
+									x:Name="Rate"
+									Text="{Binding Rate}">
+								</Lable>
+							</StackLayout>
+							<Label
+								x:Name="Description"
+								HorizontalOptions="FillAndExpand"
+								HeightRequest="100"
+								Text="{Binding Description}">
+							</Label>
+						</StackLayout>
+					</ViewCell>
+				</DataTemplate>
+			</ListView.ItemTemplate>
+		</ListView>
+	</ContentPage.Content>
+</ContentPage>

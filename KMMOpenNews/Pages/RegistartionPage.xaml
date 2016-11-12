@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+		xmlns="http://xamarin.com/schemas/2014/forms" 
+		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+		x:Class="KMMOpenNews.RegistartionPage">
+	<ContentPage.Content>
+		<StackLayout
+				Orientation="Vertical"
+				Padding="10,10,10,10"
+				HorizontalOptions="CenterAndExpand"
+				VerticalOptions="CenterAndExpand">
+
+				<Label
+					Text="'Journalism is printing what someone else does not want printed. Everything else is public relations.' -  George Orwell"
+					FontFamily="Serif"
+					HorizontalTextAlignment="Center">
+
+			    </Label>
+
+			    <StackLayout
+					Orientation="Horizontal"
+					HorizontalOptions="CenterAndExpand"
+					VerticalOptions="CenterAndExpand"
+					Padding="5">
+					<Label
+						WidthRequest="150"
+						Text="Sign up as:">
+					</Label>
+				    <Picker
+						x:Name="UserTypePicker"
+						WidthRequest="150">
+					</Picker>
+				</StackLayout>
+				<StackLayout
+					Orientation="Horizontal"
+					HorizontalOptions="CenterAndExpand"
+					VerticalOptions="CenterAndExpand"
+					Padding="5">
+				    <Label
+						WidthRequest="150"
+						Text="User name:">
+				    </Label>
+				    <Entry
+						x:Name="UserNameEntry"
+						WidthRequest="150"
+						Placeholder="user name">
+				    </Entry>
+				</StackLayout>
+				<StackLayout
+					Orientation="Horizontal"
+					HorizontalOptions="CenterAndExpand"
+					VerticalOptions="CenterAndExpand"
+					Padding="5">
+				    <Label
+						WidthRequest="150"
+						Text="Email:">
+				    </Label>
+				    <Entry
+						x:Name="EmailEntry"
+						WidthRequest="150"
+						Placeholder="email">
+				    </Entry>
+				</StackLayout>
+
+				<StackLayout
+					Orientation="Horizontal"
+					HorizontalOptions="CenterAndExpand"
+					VerticalOptions="CenterAndExpand"
+					Padding="5">
+				    <Label
+						WidthRequest="150"
+						Text="Password:">
+				    </Label>
+				    <Entry
+						x:Name="PasswordEntry"
+						WidthRequest="150"
+						IsPassword="true">
+				    </Entry>
+				</StackLayout>	
+
+				<StackLayout
+					Orientation="Horizontal"
+					HorizontalOptions="CenterAndExpand"
+					VerticalOptions="CenterAndExpand"
+					Padding="5">
+				    <Label
+						WidthRequest="150"
+						Text="Confirm password:">
+				    </Label>
+				    <Entry
+						x:Name="PasswordConfirmationEntry"
+						WidthRequest="150"
+						IsPassword="true">
+				    </Entry>
+				</StackLayout>	
+				<StackLayout
+					Padding="10"
+					HorizontalOptions="CenterAndExpand"
+					VerticalOptions="CenterAndExpand">
+				<Button
+					x:Name="SingUpButton"
+					Command="{Binding SingUpClicked}"	
+					Text="SIGN UP">
+				</Button>
+				</StackLayout>
+
+		</StackLayout>
+		
+	</ContentPage.Content>
+</ContentPage>
