@@ -9,6 +9,7 @@ namespace KMMOpenNews
 			InitializeComponent();
 
 			MainPage = new NavigationPage(new HomePage());
+			//MainPage = new NavigationPage(new KMMOpenNewsPage());
 		}
 
 		protected override void OnStart()
