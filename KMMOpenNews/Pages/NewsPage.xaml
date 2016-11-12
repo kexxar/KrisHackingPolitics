@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+		xmlns="http://xamarin.com/schemas/2014/forms" 
+		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+		x:Class="KMMOpenNews.NewsPage">
+	<ContentPage.Content>
+		<StackLayout
+			Orientation="Vertical"
+			Padding="5">
+			<Label
+				x:Name="NewsTypeLabel"
+				HorizontalTextAlignment="Center"
+				TextColor="White"
+				HorizontalOptions="FillAndExpand"
+				Text="{Binding NewsType}">
+			</Label>
+			<Label
+				FontSize="10"
+				Text="{Binding Date}">
+			</Label>
+			<StackLayout
+				Orientation="Horizontal"
+				Padding="5">
+				<Label
+					Text="{Binding Title}"
+					FontAttributes="Bold"
+					HorizontalOptions="FillAndExpand"
+					Font="20">
+				</Label>
+			<StackLayout
+				Orientation="Vertical"
+				HorizontalOptions="End"
+				Padding="5">
+				<Image
+				Source="star.png"
+				HeightRequest="30"
+				WidthRequest="30">
+				</Image>
+				<Label
+					Text="{Binding Rate}">
+				</Label>
+			</StackLayout>
+			</StackLayout>
+			<ScrollView
+				Padding="5">
+				<Label
+					Text="{Binding Description}"
+					HorizontalOptions="FillAndExpand"
+					VerticalOptions="FillAndExpand">
+				</Label>
+			</ScrollView>
+			<StackLayout
+				Orientation="Horizontal"
+				HorizontalOptions="CenterAndExpand">
+				<Button
+					Text="1">
+				</Button>
+				<Button
+					Text="2">
+				</Button>
+				<Button
+					Text="3">
+				</Button>
+				<Button
+					Text="4">
+				</Button>
+				<Button
+					Text="5">
+				</Button>
+			</StackLayout>
+
+		</StackLayout>
+		
+	</ContentPage.Content>
+</ContentPage>
