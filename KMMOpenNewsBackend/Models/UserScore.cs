@@ -15,13 +15,13 @@ namespace KMMOpenNewsBackend.Models
 
         [ForeignKey("UserId")]
         public virtual ApplicationUser User { get; set; }
-        [Required]
+        //[Required]
         public string UserId { get; set; }
 
-        [ForeignKey("PostId")]
-        public virtual NewsPost Post { get; set; }
+        [ForeignKey("NewsPostId")]
+        public virtual NewsPost NewsPost { get; set; }
         [Required]
-        public int PostId { get; set; }
+        public int NewsPostId { get; set; }
 
         [Required]
         public byte Score { get; set; } = 0;

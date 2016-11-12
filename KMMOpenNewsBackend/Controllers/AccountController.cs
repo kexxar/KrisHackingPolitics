@@ -105,39 +105,70 @@ namespace KMMOpenNewsBackend.Controllers
         public async Task<IHttpActionResult> PostNewArticle(NewsPost post) {
             try
             {
-                //var user = RequestContext.Principal as ApplicationUser;
-                //var user = UserManager
                 var userId = User.Identity.GetUserId();
-                //var newPost = new NewsPost
-                //{
-                //    Body = "lksajdka",
-                //    NewsDate = DateTime.Now,
-                //    NewsType = "type",
-                //    Title = "title",
-                //    User = user
-                //};
-                //db.NewsPosts.Add(newPost);
-                //db.SaveChanges();
-                //return Ok();
-
                 if (!ModelState.IsValid)
                 {
                     return BadRequest(ModelState);
                 }
                 if (post.User == null || post.UserId == null) {
-                    //post.User = userId;
                     post.UserId = userId;
                 }
 
                 db.NewsPosts.Add(post);
                 await db.SaveChangesAsync();
 
-                //return CreatedAtRoute("DefaultApi", new { id = post.Id }, post);
                 return Ok("New post added");
             }
             catch (Exception e) {
                 Console.WriteLine(e);
                 return Ok();
+            }
+        }
+
+        [Route("AddScore")]
+        public async Task<IHttpActionResult> AddNewScore(UserScore score) {
+            var userId = User.Identity.GetUserId();
+            if (!ModelState.IsValid) {
+                return BadRequest(ModelState);
+            }
+            if (score.UserId == null || score.User == null) {
+                score.UserId = userId;
+            }
+
+            var post = db.NewsPosts.Include(x => x.User).First(p => p.Id.Equals(score.NewsPostId));
+            if (post.UserId.Equals(userId))
+            {
+                return BadRequest("can not add score to own post");
+            }
+
+            var posts = db.NewsPosts.Include(x => x.Scores);
+            if (posts != null && posts.Any())
+            {
+                post = posts.FirstOrDefault(p => p.Id.Equals(score.NewsPostId));
+                if (post != null)
+                {
+                    var alreadyGraded = post.Scores.Any(x => x.UserId.Equals(userId));
+                    if (alreadyGraded)
+                    {
+                        return BadRequest("already added points to this post");
+                    }
+                    //post = db.NewsPosts.FirstOrDefault(x=>x.);
+
+                    db.UserScores.Add(score);
+                    db.Entry(score).Reference(x => x.NewsPost).Load();
+                    db.Entry(score).Reference(x => x.User).Load();
+                    await db.SaveChangesAsync();
+
+                    return Ok("Added new score");
+                }
+                else
+                {
+                    return BadRequest("post does not exist");
+                }
+            }
+            else
+            {
+                return BadRequest("post does not exist");
             }
         }
 
@@ -194,7 +225,7 @@ namespace KMMOpenNewsBackend.Controllers
                 //db.NewsPosts.AddOrUpdate(p => p.Id, post);
                 //db.SaveChanges();
 
-                var score = new UserScore { Score = 1, User = user, Post = post };
+                var score = new UserScore { Score = 1, User = user, NewsPost = post };
                 //db.UserScores.AddOrUpdate(score);
                 //db.SaveChanges();
             }

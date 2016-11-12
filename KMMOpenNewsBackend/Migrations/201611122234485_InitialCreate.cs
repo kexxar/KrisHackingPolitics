@@ -7,11 +7,6 @@ namespace KMMOpenNewsBackend.Migrations
     {
         public override void Up()
         {
-            if (System.Diagnostics.Debugger.IsAttached == false)
-            {
-                System.Diagnostics.Debugger.Launch();
-            }
-            Console.WriteLine("Create news post");
             CreateTable(
                 "dbo.NewsPost",
                 c => new
@@ -21,29 +16,30 @@ namespace KMMOpenNewsBackend.Migrations
                         Body = c.String(nullable: false),
                         NewsType = c.String(nullable: false),
                         NewsDate = c.DateTime(nullable: false, precision: 0, storeType: "datetime2"),
-                        UserId = c.String(nullable: false, maxLength: 128),
+                        UserId = c.String(maxLength: 128),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
+                .ForeignKey("dbo.AspNetUsers", t => t.UserId)
                 .Index(t => t.UserId);
-
-            Console.WriteLine("Create user score");
+            
             CreateTable(
                 "dbo.UserScore",
                 c => new
                     {
-                        Id = c.String(nullable: false, maxLength: 128),
+                        Id = c.Int(nullable: false, identity: true),
                         UserId = c.String(nullable: false, maxLength: 128),
+                        NewsPostId = c.Int(nullable: false),
                         Score = c.Byte(nullable: false),
-                        NewsPost_Id = c.Int(),
+                        ApplicationUser_Id = c.String(maxLength: 128),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
-                .ForeignKey("dbo.NewsPost", t => t.NewsPost_Id)
+                .ForeignKey("dbo.NewsPost", t => t.NewsPostId, cascadeDelete: true)
+                .ForeignKey("dbo.AspNetUsers", t => t.ApplicationUser_Id)
+                .ForeignKey("dbo.AspNetUsers", t => t.UserId)
                 .Index(t => t.UserId)
-                .Index(t => t.NewsPost_Id);
-
-            Console.WriteLine("Create users");
+                .Index(t => t.NewsPostId)
+                .Index(t => t.ApplicationUser_Id);
+            
             CreateTable(
                 "dbo.AspNetUsers",
                 c => new
@@ -66,8 +62,7 @@ namespace KMMOpenNewsBackend.Migrations
                 .ForeignKey("dbo.UserTypes", t => t.UserTypeId, cascadeDelete: true)
                 .Index(t => t.UserTypeId)
                 .Index(t => t.UserName, unique: true, name: "UserNameIndex");
-
-            Console.WriteLine("Create user claims");
+            
             CreateTable(
                 "dbo.AspNetUserClaims",
                 c => new
@@ -80,8 +75,7 @@ namespace KMMOpenNewsBackend.Migrations
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.UserId);
-
-            Console.WriteLine("Create user logins");
+            
             CreateTable(
                 "dbo.AspNetUserLogins",
                 c => new
@@ -93,8 +87,7 @@ namespace KMMOpenNewsBackend.Migrations
                 .PrimaryKey(t => new { t.LoginProvider, t.ProviderKey, t.UserId })
                 .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.UserId);
-
-            Console.WriteLine("Create user roles");
+            
             CreateTable(
                 "dbo.AspNetUserRoles",
                 c => new
@@ -107,8 +100,7 @@ namespace KMMOpenNewsBackend.Migrations
                 .ForeignKey("dbo.AspNetRoles", t => t.RoleId, cascadeDelete: true)
                 .Index(t => t.UserId)
                 .Index(t => t.RoleId);
-
-            Console.WriteLine("Create user comment");
+            
             CreateTable(
                 "dbo.UserComment",
                 c => new
@@ -127,8 +119,7 @@ namespace KMMOpenNewsBackend.Migrations
                 .Index(t => t.NewsPostId)
                 .Index(t => t.UserId)
                 .Index(t => t.ApplicationUser_Id);
-
-            Console.WriteLine("Create user types");
+            
             CreateTable(
                 "dbo.UserTypes",
                 c => new
@@ -137,8 +128,7 @@ namespace KMMOpenNewsBackend.Migrations
                         Name = c.String(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
-
-            Console.WriteLine("Create roles");
+            
             CreateTable(
                 "dbo.AspNetRoles",
                 c => new
@@ -154,7 +144,6 @@ namespace KMMOpenNewsBackend.Migrations
         public override void Down()
         {
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
-            DropForeignKey("dbo.UserScore", "NewsPost_Id", "dbo.NewsPost");
             DropForeignKey("dbo.UserScore", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUsers", "UserTypeId", "dbo.UserTypes");
             DropForeignKey("dbo.UserComment", "ApplicationUser_Id", "dbo.AspNetUsers");
@@ -163,7 +152,9 @@ namespace KMMOpenNewsBackend.Migrations
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.NewsPost", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.UserScore", "ApplicationUser_Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.UserScore", "NewsPostId", "dbo.NewsPost");
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
             DropIndex("dbo.UserComment", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.UserComment", new[] { "UserId" });
@@ -174,7 +165,8 @@ namespace KMMOpenNewsBackend.Migrations
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("dbo.AspNetUsers", new[] { "UserTypeId" });
-            DropIndex("dbo.UserScore", new[] { "NewsPost_Id" });
+            DropIndex("dbo.UserScore", new[] { "ApplicationUser_Id" });
+            DropIndex("dbo.UserScore", new[] { "NewsPostId" });
             DropIndex("dbo.UserScore", new[] { "UserId" });
             DropIndex("dbo.NewsPost", new[] { "UserId" });
             DropTable("dbo.AspNetRoles");

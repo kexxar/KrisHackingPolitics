@@ -52,7 +52,7 @@ namespace KMMOpenNewsBackend.Models
             //modelBuilder.Entity<UserComment>().HasRequired(c => c.User).WithRequiredDependent().WillCascadeOnDelete(false);
             //modelBuilder.Entity<NewsPost>().HasRequired(n => n.
             modelBuilder.Entity<UserComment>().HasRequired(c => c.User).WithMany().WillCascadeOnDelete(false);
-            modelBuilder.Entity<UserScore>().HasRequired(s => s.Post).WithMany().WillCascadeOnDelete(false);
+            //modelBuilder.Entity<UserScore>().HasRequired(s => s.NewsPost).WithMany().WillCascadeOnDelete(false);
             modelBuilder.Entity<UserScore>().HasRequired(s => s.User).WithMany().WillCascadeOnDelete(false);
             modelBuilder.Entity<NewsPost>().Property(f => f.NewsDate).HasColumnType("datetime2").HasPrecision(0);
             modelBuilder.Entity<UserComment>().Property(f => f.CommentDate).HasColumnType("datetime2").HasPrecision(0);
