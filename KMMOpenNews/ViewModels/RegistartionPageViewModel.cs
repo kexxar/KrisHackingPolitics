@@ -68,7 +68,8 @@ namespace KMMOpenNews
 				{
 
 					CrossService.Toast.Info("Učitavanje. . .");
-					Page.Navigation.PushAsync(new AddNewsPage());
+					//MessagingCenter.Send(new User(), "Reload");
+					Page.Navigation.PopAsync();
 				}
 				else {
 					CrossService.Toast.Info("Lozinka se ne poklapa.");
