@@ -25,6 +25,7 @@ namespace KMMOpenNews
 				{
 					CrossService.Toast.Info("Učitavanje. . .");
 					DependencyService.Get<IUserAccount>().SaveUser(user);
+					Navigation.PopAsync();
 				} else {
 					CrossService.Toast.Info("Pogrešno korisničko ime ili lozinka.");
 				}
