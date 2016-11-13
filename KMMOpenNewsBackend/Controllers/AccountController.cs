@@ -63,10 +63,13 @@ namespace KMMOpenNewsBackend.Controllers
         public UserInfoViewModel GetUserInfo()
         {
             ExternalLoginData externalLogin = ExternalLoginData.FromIdentity(User.Identity as ClaimsIdentity);
+            var userTypeId = db.Users.Find(User.Identity.GetUserId()).UserTypeId;
+            //var userType = db.UserTypes.Find(userTypeId);
 
             return new UserInfoViewModel
             {
-                Email = User.Identity.GetUserName(),
+                userName = User.Identity.GetUserName(),
+                UserTypeId = (int)userTypeId,
                 HasRegistered = externalLogin == null,
                 LoginProvider = externalLogin != null ? externalLogin.LoginProvider : null
             };
@@ -138,7 +141,7 @@ namespace KMMOpenNewsBackend.Controllers
             var post = db.NewsPosts.Include(x => x.User).First(p => p.Id.Equals(score.NewsPostId));
             if (post.UserId.Equals(userId))
             {
-                return BadRequest("can not add score to own post");
+                return BadRequest("Ne možete ocenjivati vesti koje ste sami postavili");
             }
 
             var posts = db.NewsPosts.Include(x => x.Scores);
@@ -150,7 +153,7 @@ namespace KMMOpenNewsBackend.Controllers
                     var alreadyGraded = post.Scores.Any(x => x.UserId.Equals(userId));
                     if (alreadyGraded)
                     {
-                        return BadRequest("already added points to this post");
+                        return BadRequest("Već ste ocenili ovu vest");
                     }
                     //post = db.NewsPosts.FirstOrDefault(x=>x.);
 
@@ -175,29 +178,41 @@ namespace KMMOpenNewsBackend.Controllers
         [Route("GetNews")]
         [OverrideAuthentication]
         [AllowAnonymous]
-        public async Task<IQueryable<NewsPost>> GetNews() {
-            if (User != null && User.Identity != null)
-            {
-                return db.NewsPosts.Include(x => x.User).Include(x => x.UserComments);
+        public async Task<IEnumerable<NewsPost>> GetNews() {
+            if (User == null || User.Identity == null) {
+                Console.WriteLine("no user");
             }
-            else {
-                return db.NewsPosts;
-            }
+            Console.WriteLine(User.Identity.GetUserId());
+            var userId = User.Identity.GetUserId();
+            //if (string.IsNullOrEmpty(userId)) {
+                var news = await db.NewsPosts.Include(x => x.UserComments).Include(x => x.Scores).ToListAsync();
+                return news;
+            //}
+            //if (User != null && User.Identity != null)
+            //{
+                //return db.NewsPosts.Include(x => x.User).Include(x => x.UserComments).Include(x => x.Scores);
+            //}
+            //else {
+            //    return db.NewsPosts;
+            //}
             //var news = db.NewsPosts
         }
 
         [Route("GetLatesNews")]
         [OverrideAuthentication]
         [AllowAnonymous]
-        public async Task<IQueryable<NewsPost>> GetLatestNews() {
-            if (User != null && User.Identity != null)
-            {
-                return db.NewsPosts.Include(x => x.User).Include(x => x.UserComments).OrderByDescending(n => n.NewsDate).Take(3);
-            }
-            else
-            {
-                return db.NewsPosts.OrderByDescending(n => n.NewsDate).Take(3);
-            }
+        public async Task<IEnumerable<NewsPost>> GetLatestNews() {
+            var userId = User.Identity.GetUserId();
+            var news = await db.NewsPosts.Include(x => x.UserComments).Include(x => x.Scores).ToListAsync();
+            return news.OrderByDescending(n => n.NewsDate).Take(3);
+            //if (User != null && User.Identity != null)
+            //{
+                //return db.NewsPosts.Include(x => x.User).Include(x => x.UserComments).OrderByDescending(n => n.NewsDate).Take(3);
+            //}
+            //else
+            //{
+            //    return db.NewsPosts.OrderByDescending(n => n.NewsDate).Take(3);
+            //}
         }
 
         //api/Account/SetupData
@@ -498,6 +513,7 @@ namespace KMMOpenNewsBackend.Controllers
             }
 
             var user = new ApplicationUser() { UserName = model.Username, Email = model.Email };
+            user.UserTypeId = model.UserTypeId;
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 
