@@ -6,6 +6,7 @@ namespace KMMOpenNews
 {
 	public class NewsPost
 	{
+		public int Id { get; set; }
 		public string Title { get; set; }
 		public string Body { get; set; }
 		public string NewsType { get; set; }

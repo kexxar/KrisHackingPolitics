@@ -1,8 +1,12 @@
 ﻿using System;
+using System.Threading.Tasks;
+using System.Windows.Input;
+using PropertyChanged;
 using Xamarin.Forms;
 
 namespace KMMOpenNews
 {
+	[ImplementPropertyChanged]
 	public class NewsPageViewModel
 	{
 		private readonly NewsPage Page;
@@ -13,6 +17,10 @@ namespace KMMOpenNews
 		public string Rate { get; set; }
 		public string Description { get; set; }
 		public string Date { get; set; }
+
+		public ICommand PlusCommand { get; set; }
+		public bool ButtonsEnabled { get; set; } = true;
+		public ICommand MinusCommand { get; set; }
 
 		public NewsPageViewModel(NewsPage page, NewsPost post, Label newsTypeLabel)
 		{
@@ -37,7 +45,23 @@ namespace KMMOpenNews
 			} else if (NewsType.Equals("HRONIKA")){
 				NewsTypeLabel.BackgroundColor = Color.Black;
 			}
-			
+
+			PlusCommand = new Command(async () => {
+				await AddScore(post, 1);
+			});
+
+			MinusCommand = new Command(async () => {
+				await AddScore(post, -1);
+			});
+
+		}
+
+		private async Task AddScore(NewsPost post, int score) { 
+			ButtonsEnabled = false;
+			var success = await DependencyService.Get<IAddScore>().AddScore(post, 1);
+			if (!success) {
+				ButtonsEnabled = true;
+			}
 		}
 	}
 }

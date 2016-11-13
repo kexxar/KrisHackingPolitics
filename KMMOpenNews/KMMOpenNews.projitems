@@ -84,6 +84,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Model\UserComment.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\FetchNewsService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Messages\UserStatusMessage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interface\IAddScore.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\AddScoreService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Pages\" />
