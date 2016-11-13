@@ -27,13 +27,15 @@ namespace KMMOpenNewsBackend.Models
 
     public class UserInfoViewModel
     {
-        public string Email { get; set; }
+        public string userName { get; set; }
 
         public bool HasRegistered { get; set; }
 
         public string LoginProvider { get; set; }
 
         public UserType UserType { get; set; }
+
+        public int UserTypeId { get; set; }
 
         public ICollection<NewsPost> NewsPosts { get; set; }
 

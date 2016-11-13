@@ -24,6 +24,6 @@ namespace KMMOpenNewsBackend.Models
         public int NewsPostId { get; set; }
 
         [Required]
-        public byte Score { get; set; } = 0;
+        public int Score { get; set; } = 0;
     }
 }
