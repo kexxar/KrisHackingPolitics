@@ -30,7 +30,7 @@ namespace KMMOpenNews
 						{ "Title", Title },
 						{ "NewsType", NewsType },
 						{ "Body", Desctipiton },
-						{ "NewsDate", DateTime.Now.ToString()}
+						{ "NewsDate", DateTime.Now.ToString() }
 					};
 					var json = JsonConvert.SerializeObject(parameters);
 
