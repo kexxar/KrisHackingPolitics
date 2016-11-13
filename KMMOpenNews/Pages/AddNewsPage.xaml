@@ -6,22 +6,36 @@
 	<ContentPage.Content>
 		<StackLayout
 			Padding="5"
-			Orientation="Vertical">
+			Orientation="Vertical"
+			HorizontalOptions="FillAndExpand"
+			VerticalOptions="FillAndExpand">
+						<!--	App logo and name-->
+			<Image
+				Source="logo"
+				WidthRequest="100"
+				HeightRequest="100">
+			</Image>
+			<Label
+				HorizontalOptions="CenterAndExpand"
+				Text="obJavi!"
+				FontAttributes="Bold"
+				FontSize="30">
+			</Label>
 			<StackLayout
 				Orientation="Horizontal">
 				<Label
-					Text="Title:">
+					Text="Naslov:">
 				</Label>
 				<Entry
 					HorizontalOptions="FillAndExpand"
 					x:Name="Title"
-					Placeholder="Add article title">
+					Placeholder="Dodaj naslov">
 				</Entry>
 			</StackLayout>
 			<StackLayout
 				Orientation="Horizontal">
 				<Label
-					Text="News type:">
+					Text="Kategorija vesti:">
 				</Label>
 				<Picker
 					HorizontalOptions="FillAndExpand"
@@ -29,7 +43,7 @@
 				</Picker>
 			</StackLayout>
 			<Label
-				Text="Article description:">
+				Text="Opis vesti:">
 			</Label>
 			<ScrollView>
 				<Entry
@@ -41,12 +55,12 @@
 				</Entry>
 			</ScrollView>
 			<Label
-				Text="News references:">
+				Text="Izvori vesti">
 			</Label>
 			<StackLayout
 				Orientation="Horizontal">
 				<Label
-					Text="Reference:">
+					Text="Izvor:">
 				</Label>
 				<Entry
 					x:Name="FirstReference"
@@ -56,7 +70,7 @@
 			<StackLayout
 				Orientation="Horizontal">
 				<Label
-					Text="Reference:">
+					Text="Izvor:">
 				</Label>
 				<Entry
 					x:Name="SecondReference"
@@ -66,7 +80,7 @@
 			<StackLayout
 				Orientation="Horizontal">
 				<Label
-					Text="Goverment Institution:">
+					Text="Pretrazi državne insitucije:">
 				</Label>
 				<Entry
 					x:Name="InstitutionSearch"
@@ -74,7 +88,7 @@
 				</Entry>
 			</StackLayout>
 			<Button
-				Text="Add"
+				Text="obJavi!"
 				x:Name="Add">
 			</Button>
 		</StackLayout>

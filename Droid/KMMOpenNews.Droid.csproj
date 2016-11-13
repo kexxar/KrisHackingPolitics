@@ -108,6 +108,7 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\icon.png" />
     <AndroidResource Include="Resources\drawable\feather.png" />
     <AndroidResource Include="Resources\drawable\star.png" />
+    <AndroidResource Include="Resources\drawable\logo.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DependencyService\" />

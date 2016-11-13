@@ -12,8 +12,8 @@ namespace KMMOpenNews
 			InitializeComponent();
 			BindingContext = new RegistartionPageViewModel(this, UserTypePicker, UserNameEntry, EmailEntry, PasswordEntry, PasswordConfirmationEntry);
 
-			UserTypePicker.Items.Add("User");
-			UserTypePicker.Items.Add("Journalist");
+			UserTypePicker.Items.Add("Korisnik");
+			UserTypePicker.Items.Add("Novinar");
 			UserTypePicker.SelectedIndex = 0;
 		}
 	}

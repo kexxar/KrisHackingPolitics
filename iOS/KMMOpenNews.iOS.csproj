@@ -136,6 +136,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\feather.png" />
     <BundleResource Include="Resources\star.png" />
+    <BundleResource Include="Resources\logo.png" />
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="ToastIOS">

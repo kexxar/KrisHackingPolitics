@@ -13,6 +13,8 @@ namespace KMMOpenNews
 		private readonly Entry PasswordEntry;
 		private readonly Entry PasswordConfirmationEntry;
 
+		public int UserType;
+
 		public RegistartionPageViewModel(RegistartionPage page, Picker userTypePicker, Entry userNameEntry, Entry emailEntry, Entry passwordEntry, Entry passwordConfirmationEntry)
 		{
 			Page = page;
@@ -28,7 +30,8 @@ namespace KMMOpenNews
 		private ICommand _signUpClicked;
 		public ICommand SingUpClicked { 
 			get {
-				return _signUpClicked ?? (_signUpClicked = new Command(() => {
+				//string UserName, string Email, int UserTypeId, string Password, string ConfirmPassword
+				return _signUpClicked ?? (_signUpClicked = new Command(async() => {
 					Validation();
 				}));
 			}
@@ -41,19 +44,37 @@ namespace KMMOpenNews
 			return true;
 		}
 
-		public void Validation() {
+		public async void  Validation() {
 
-			if (string.IsNullOrEmpty(UserNameEntry.Text) && string.IsNullOrEmpty(EmailEntry.Text)){;
+			if (string.IsNullOrEmpty(UserNameEntry.Text) && string.IsNullOrEmpty(EmailEntry.Text) && string.IsNullOrEmpty(PasswordEntry.Text) && string.IsNullOrEmpty(PasswordConfirmationEntry.Text)){;
 
-				CrossService.Toast.Info("Please enter data.");
+				CrossService.Toast.Info("Unesi ime i lozinku.");
 
 			} else if (string.IsNullOrEmpty(UserNameEntry.Text) || string.IsNullOrEmpty(EmailEntry.Text)) {
-				CrossService.Toast.Info("Please enter user name and email.");
+				CrossService.Toast.Info("Unesi ime i lozinku.");
 				
 			} else {
-				CrossService.Toast.Info("Loading. . .");
 
-				Page.Navigation.PushAsync(new AddNewsPage());
+				if (UserTypePicker.SelectedIndex == 0)
+				{
+					UserType = 2;
+				}
+				else {
+					UserType = 3;
+				}
+
+				var isRegister =  await DependencyService.Get<IRegistrationService>().RegistrationUser(UserNameEntry.Text, EmailEntry.Text, UserType, PasswordEntry.Text, PasswordConfirmationEntry.Text);
+				if (isRegister)
+				{
+
+					CrossService.Toast.Info("Učitavanje. . .");
+					Page.Navigation.PushAsync(new AddNewsPage());
+				}
+				else {
+					CrossService.Toast.Info("Lozinka se ne poklapa.");
+				}
+
+
 				
 			}
 		}
