@@ -42,11 +42,11 @@ namespace KMMOpenNews
 				var fullList = await DependencyService.Get<IFetchNewsService>().FetchNewsList();
 				Console.WriteLine(fullList);
 				//TODO filtering disabled untill we have some news in specific categories
-				NewsItems = fullList.Where(x => x.NewsType.ToLower().Contains(category.ToLower())).ToList();
+				var filteredList = fullList.Where(x => x.NewsType.ToLower().Contains(category.ToLower())).ToList();
 				//NewsItems = fullList;
 				//fullList.OrderByDescending((arg) => arg.NewsDate);
 				if (sortOrder != null) {
-					var sorted = fullList.OrderByDescending(sortOrder);
+					var sorted = filteredList.OrderByDescending(sortOrder);
 				}
 				Device.BeginInvokeOnMainThread(() => {
 					NewsItems.Clear();
