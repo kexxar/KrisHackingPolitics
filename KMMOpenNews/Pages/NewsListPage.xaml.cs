@@ -7,10 +7,10 @@ namespace KMMOpenNews
 {
 	public partial class NewsListPage : ContentPage
 	{
-		public NewsListPage()
+		public NewsListPage(string category, Func<NewsPost, object> sortOrder = null)
 		{
 			InitializeComponent();
-			BindingContext = new NewsListPageViewModel(this, NewsList);
+			BindingContext = new NewsListPageViewModel(this, category, sortOrder, NewsList);
 		}
 	}
 }

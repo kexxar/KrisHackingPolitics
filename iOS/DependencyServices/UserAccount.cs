@@ -34,8 +34,8 @@ namespace KMMOpenNews.iOS
 
 		public void SaveUser(User user) {
 			Account account = new Account { Username = user.userName };
-			account.Properties.Add("Password", user.Password);
-			account.Properties.Add("Email", user.Email);
+			//account.Properties.Add("Password", user.Password);
+			//account.Properties.Add("Email", user.Email);
 			account.Properties.Add("Token", user.access_token);
 			AccountStore.Create().Save(account, App.AppName);
 		}

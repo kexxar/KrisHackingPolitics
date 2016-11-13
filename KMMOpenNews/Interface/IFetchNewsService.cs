@@ -1,8 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+
 namespace KMMOpenNews
 {
 	public interface IFetchNewsService
 	{
-		//Task<
+		Task<List<NewsPost>> FetchNewsList();
+		Task<List<NewsPost>> FetchLatestNews();
 	}
 }

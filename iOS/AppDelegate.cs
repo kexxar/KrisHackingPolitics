@@ -4,6 +4,7 @@ using System.Linq;
 
 using Foundation;
 using UIKit;
+using Xamarin.Auth;
 
 namespace KMMOpenNews.iOS
 {
@@ -17,6 +18,15 @@ namespace KMMOpenNews.iOS
 			LoadApplication(new App());
 
 			return base.FinishedLaunching(app, options);
+		}
+
+		public override void WillTerminate(UIApplication uiApplication) {
+			base.WillTerminate(uiApplication);
+
+  			var account = AccountStore.Create().FindAccountsForService(App.AppName).FirstOrDefault();
+			if (account != null) {
+				AccountStore.Create().Delete(account, App.AppName);
+			}
 		}
 	}
 }

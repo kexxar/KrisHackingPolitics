@@ -15,8 +15,8 @@ namespace KMMOpenNews
 
 
 			Title.SetBinding(Label.TextProperty, "Title");
-			Descrpition.SetBinding(Label.TextProperty, "Description");
-			Rate.SetBinding(Label.TextProperty, "Rate");
+			Descrpition.SetBinding(Label.TextProperty, "Body");
+			Rate.SetBinding(Label.TextProperty, "TotalScore");
 
 			View = cellWrapper;
 		}

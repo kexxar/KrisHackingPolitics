@@ -82,7 +82,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Model\NewsPost.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\UserScore.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\UserComment.cs" />
-
+    <Compile Include="$(MSBuildThisFileDirectory)Services\FetchNewsService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Messages\UserStatusMessage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interface\IAddScore.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\AddScoreService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Pages\" />
@@ -91,5 +94,6 @@
     <Folder Include="$(MSBuildThisFileDirectory)Services\" />
     <Folder Include="$(MSBuildThisFileDirectory)Interface\" />
     <Folder Include="$(MSBuildThisFileDirectory)Cells\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Messages\" />
   </ItemGroup>
 </Project>

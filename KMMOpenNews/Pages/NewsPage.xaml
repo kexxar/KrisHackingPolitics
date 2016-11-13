@@ -53,10 +53,14 @@
 				Orientation="Horizontal"
 				HorizontalOptions="CenterAndExpand">
 				<Button
-					Text="+">
+					Text="+"
+						Command = "{Binding PlusCommand}"
+						IsEnabled = "{Binding ButtonsEnabled}">
 				</Button>
 				<Button
-					Text="-">
+					Text="-"
+						Command = "{Binding MinusCommand}"
+						IsEnabled = "{Binding ButtonsEnabled}">
 				</Button>
 			</StackLayout>
 

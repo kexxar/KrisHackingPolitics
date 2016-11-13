@@ -5,5 +5,6 @@ namespace KMMOpenNews
 	{
 		public int NewsPostId { get; set; }
 		public byte Score { get; set; }
+		public string UserId { get; set; }
 	}
 }

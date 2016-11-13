@@ -7,10 +7,10 @@ namespace KMMOpenNews
 {
 	public partial class NewsPage : ContentPage
 	{
-		public NewsPage()
+		public NewsPage(NewsPost post)
 		{
 			InitializeComponent();
-			BindingContext = new NewsPageViewModel(this, NewsTypeLabel);
+			BindingContext = new NewsPageViewModel(this, post, NewsTypeLabel);
 		}
 	}
 }
