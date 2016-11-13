@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace KMMOpenNews
@@ -31,6 +32,10 @@ namespace KMMOpenNews
 		                         //, StackLayout topNews1, StackLayout topNews2, StackLayout topNews3)
 		{
 			Page = page;
+
+			Task.Run(() => {
+				
+			});
 
 			//TopNews1 = topNews1;
 
