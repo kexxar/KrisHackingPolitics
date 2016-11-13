@@ -14,6 +14,10 @@ namespace KMMOpenNews.iOS
 		public override bool FinishedLaunching(UIApplication app, NSDictionary options)
 		{
 			global::Xamarin.Forms.Forms.Init();
+			var account = AccountStore.Create().FindAccountsForService(App.AppName).FirstOrDefault();
+			if (account != null) {
+				AccountStore.Create().Delete(account, App.AppName);
+			}
 
 			LoadApplication(new App());
 

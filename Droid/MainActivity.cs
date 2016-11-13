@@ -25,13 +25,18 @@ namespace KMMOpenNews.Droid
 
 			global::Xamarin.Forms.Forms.Init(this, bundle);
 
+			var account = AccountStore.Create(Forms.Context).FindAccountsForService(App.AppName).FirstOrDefault();
+			if (account != null) {
+				AccountStore.Create(Forms.Context).Delete(account, App.AppName);
+			}
+
 			LoadApplication(new App());
 		}
 
 		protected override void OnDestroy() {
 			base.OnDestroy();
 
- 			 var account = AccountStore.Create(Forms.Context).FindAccountsForService(App.AppName).FirstOrDefault();
+ 			var account = AccountStore.Create(Forms.Context).FindAccountsForService(App.AppName).FirstOrDefault();
 			if (account != null) {
 				AccountStore.Create(Forms.Context).Delete(account, App.AppName);
 			}
