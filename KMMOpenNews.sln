@@ -12,7 +12,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KMMOpenNewsBackend", "KMMOp
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		KMMOpenNews\KMMOpenNews.projitems*{6fa81b78-7f58-4595-9be6-999631ad07e6}*SharedItemsImports = 4
 		KMMOpenNews\KMMOpenNews.projitems*{bdb601aa-3a4d-459e-838b-21d8c1ba98cb}*SharedItemsImports = 13
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

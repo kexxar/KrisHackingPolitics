@@ -207,36 +207,23 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NewsPostsController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201611120349366_InitialCreate.cs" />
-    <Compile Include="Migrations\201611120349366_InitialCreate.Designer.cs">
-      <DependentUpon>201611120349366_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201611120559071_InitialCreate1.cs" />
-    <Compile Include="Migrations\201611120559071_InitialCreate1.Designer.cs">
-      <DependentUpon>201611120559071_InitialCreate1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201611120619415_InitialCreate2.cs" />
-    <Compile Include="Migrations\201611120619415_InitialCreate2.Designer.cs">
-      <DependentUpon>201611120619415_InitialCreate2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201611120721170_InitialCreate3.cs" />
-    <Compile Include="Migrations\201611120721170_InitialCreate3.Designer.cs">
-      <DependentUpon>201611120721170_InitialCreate3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201611121114193_InitialCreate4.cs" />
-    <Compile Include="Migrations\201611121114193_InitialCreate4.Designer.cs">
-      <DependentUpon>201611121114193_InitialCreate4.cs</DependentUpon>
+    <Compile Include="Migrations\201611122234485_InitialCreate.cs" />
+    <Compile Include="Migrations\201611122234485_InitialCreate.Designer.cs">
+      <DependentUpon>201611122234485_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\DTO\NewsPostDTO.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\NewsPost.cs" />
     <Compile Include="Models\UserComment.cs" />
+    <Compile Include="Models\UserScore.cs" />
     <Compile Include="Models\UserType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
@@ -310,27 +297,9 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201611120349366_InitialCreate.resx">
-      <DependentUpon>201611120349366_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201611122234485_InitialCreate.resx">
+      <DependentUpon>201611122234485_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201611120559071_InitialCreate1.resx">
-      <DependentUpon>201611120559071_InitialCreate1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201611120619415_InitialCreate2.resx">
-      <DependentUpon>201611120619415_InitialCreate2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201611120721170_InitialCreate3.resx">
-      <DependentUpon>201611120721170_InitialCreate3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201611121114193_InitialCreate4.resx">
-      <DependentUpon>201611121114193_InitialCreate4.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\KMMOpenNews.SharedModels\KMMOpenNews.SharedModels.csproj">
-      <Project>{286c5a55-6472-472e-b5ca-ecf5e5ae0575}</Project>
-      <Name>KMMOpenNews.SharedModels</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -350,7 +319,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>7038</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:7038/</IISUrl>
+          <IISUrl>http://localhost:8080</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

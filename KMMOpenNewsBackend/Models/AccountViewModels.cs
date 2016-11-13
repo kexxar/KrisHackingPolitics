@@ -40,6 +40,26 @@ namespace KMMOpenNewsBackend.Models
         public ICollection<UserComment> UserComments { get; set; }
     }
 
+    public class UserInfo {
+        public string Email { get; set; }
+        public UserType UserType { get; set; }
+        public ICollection<NewsPost> NewsPosts { get; set; }
+        public ICollection<UserComment> UserComments { get; set; }
+        public string Username { get; set; }
+
+        public static UserInfo FromAppUser(ApplicationUser user) {
+            var info = new UserInfo
+            {
+                Email = user.Email,
+                UserType = user.UserType,
+                NewsPosts = user.NewsPosts,
+                UserComments = user.UserComments,
+                Username = user.UserName
+            };
+            return info;
+        }
+    }
+
     public class UserLoginInfoViewModel
     {
         public string LoginProvider { get; set; }

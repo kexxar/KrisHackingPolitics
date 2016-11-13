@@ -21,6 +21,9 @@ namespace KMMOpenNewsBackend.Models
         public virtual NewsPost NewsPost { get; set; }
 
         [Required]
+        public DateTime CommentDate { get; set; } = DateTime.MinValue;
+
+        [Required]
         public string UserId { get; set; }
         [ForeignKey("UserId")]
         public virtual ApplicationUser User { get; set; }

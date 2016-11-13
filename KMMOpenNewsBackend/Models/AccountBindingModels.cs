@@ -43,6 +43,10 @@ namespace KMMOpenNewsBackend.Models
         public string Username { get; set; }
 
         [Required]
+        [Display(Name = "UserType")]
+        public int UserTypeId { get; set; }
+
+        [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
@@ -52,6 +56,8 @@ namespace KMMOpenNewsBackend.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+
     }
 
     public class RegisterExternalBindingModel

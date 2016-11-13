@@ -18,6 +18,8 @@ using KMMOpenNewsBackend.Providers;
 using KMMOpenNewsBackend.Results;
 using System.Linq;
 using System.Data.Entity;
+using KMMOpenNewsBackend.Models.DTO;
+//using System.Data.Entity.Migrations;
 
 namespace KMMOpenNewsBackend.Controllers
 {
@@ -79,7 +81,7 @@ namespace KMMOpenNewsBackend.Controllers
             {
                 //var count = db.Users.Count();
                 var details = new List<UserInfoViewModel>();
-                var users = await db.Users.Include(x => x.UserType).Include(x => x.NewsPosts).Include(x=>x.UserComments).ToListAsync();
+                var users = await db.Users.Include(x => x.UserType).Include(x => x.NewsPosts).Include(x => x.UserComments).ToListAsync();
                 return users;
                 //foreach (var user in users)
                 //{
@@ -97,6 +99,140 @@ namespace KMMOpenNewsBackend.Controllers
                 Console.WriteLine(e);
                 return null;
             }
+        }
+
+        [Route("NewArticle")]
+        public async Task<IHttpActionResult> PostNewArticle(NewsPost post) {
+            try
+            {
+                var userId = User.Identity.GetUserId();
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+                if (post.User == null || post.UserId == null) {
+                    post.UserId = userId;
+                }
+
+                db.NewsPosts.Add(post);
+                await db.SaveChangesAsync();
+
+                return Ok("New post added");
+            }
+            catch (Exception e) {
+                Console.WriteLine(e);
+                return Ok();
+            }
+        }
+
+        [Route("AddScore")]
+        public async Task<IHttpActionResult> AddNewScore(UserScore score) {
+            var userId = User.Identity.GetUserId();
+            if (!ModelState.IsValid) {
+                return BadRequest(ModelState);
+            }
+            if (score.UserId == null || score.User == null) {
+                score.UserId = userId;
+            }
+
+            var post = db.NewsPosts.Include(x => x.User).First(p => p.Id.Equals(score.NewsPostId));
+            if (post.UserId.Equals(userId))
+            {
+                return BadRequest("can not add score to own post");
+            }
+
+            var posts = db.NewsPosts.Include(x => x.Scores);
+            if (posts != null && posts.Any())
+            {
+                post = posts.FirstOrDefault(p => p.Id.Equals(score.NewsPostId));
+                if (post != null)
+                {
+                    var alreadyGraded = post.Scores.Any(x => x.UserId.Equals(userId));
+                    if (alreadyGraded)
+                    {
+                        return BadRequest("already added points to this post");
+                    }
+                    //post = db.NewsPosts.FirstOrDefault(x=>x.);
+
+                    db.UserScores.Add(score);
+                    db.Entry(score).Reference(x => x.NewsPost).Load();
+                    db.Entry(score).Reference(x => x.User).Load();
+                    await db.SaveChangesAsync();
+
+                    return Ok("Added new score");
+                }
+                else
+                {
+                    return BadRequest("post does not exist");
+                }
+            }
+            else
+            {
+                return BadRequest("post does not exist");
+            }
+        }
+
+        [Route("GetNews")]
+        [OverrideAuthentication]
+        [AllowAnonymous]
+        public async Task<IQueryable<NewsPost>> GetNews() {
+            if (User != null && User.Identity != null)
+            {
+                return db.NewsPosts.Include(x => x.User).Include(x => x.UserComments);
+            }
+            else {
+                return db.NewsPosts;
+            }
+            //var news = db.NewsPosts
+        }
+
+        [Route("GetLatesNews")]
+        [OverrideAuthentication]
+        [AllowAnonymous]
+        public async Task<IQueryable<NewsPost>> GetLatestNews() {
+            if (User != null && User.Identity != null)
+            {
+                return db.NewsPosts.Include(x => x.User).Include(x => x.UserComments).OrderByDescending(n => n.NewsDate).Take(3);
+            }
+            else
+            {
+                return db.NewsPosts.OrderByDescending(n => n.NewsDate).Take(3);
+            }
+        }
+
+        //api/Account/SetupData
+        [Route("SetupData")]
+        [AcceptVerbs("GET", "POST")]
+        [OverrideAuthentication]
+        [AllowAnonymous]
+        public async Task<IHttpActionResult> SetupData()
+        {
+            try
+            {
+                var user = db.Users.First(x => x.Email.Equals("keravica@gmail.com"));
+                var post = new NewsPost
+                {
+                    Body = "nvad jashjavh  biaev ",
+                    //Id = 1,
+                    NewsDate = DateTime.Now,
+                    NewsType = "Politics",
+                    //Scores = new List<UserScore> { new UserScore { Score = 1, User = user, Post = this } },
+                    User = user,
+                    Title = "BlaBla"
+                };
+                db.NewsPosts.Add(post);
+                db.SaveChanges();
+                //db.NewsPosts.AddOrUpdate(p => p.Id, post);
+                //db.SaveChanges();
+
+                var score = new UserScore { Score = 1, User = user, NewsPost = post };
+                //db.UserScores.AddOrUpdate(score);
+                //db.SaveChanges();
+            }
+            catch (Exception e) {
+                Console.WriteLine(e);
+            }
+            return Ok();
         }
 
         // POST api/Account/Logout
