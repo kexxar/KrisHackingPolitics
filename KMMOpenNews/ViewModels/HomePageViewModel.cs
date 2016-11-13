@@ -34,7 +34,8 @@ namespace KMMOpenNews
 			Page = page;
 
 			Task.Run(() => {
-				
+				//TODO get news from server
+
 			});
 
 			//TopNews1 = topNews1;
