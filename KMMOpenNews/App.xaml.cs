@@ -4,6 +4,7 @@ namespace KMMOpenNews
 {
 	public partial class App : Application
 	{
+		public static string AppName = "oBjavi";
 		public App()
 		{
 			InitializeComponent();

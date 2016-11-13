@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using Xamarin.Auth;
 using Xamarin.Forms;
 
 namespace KMMOpenNews
@@ -18,12 +18,13 @@ namespace KMMOpenNews
 				this.Navigation.PushAsync(new RegistartionPage());
 			});
 
-			SignIn.Command = new Command(async() => {
+			SignIn.Command = new Command(async () => {
 				var user = await DependencyService.Get<ILoginService>().LoginUser( UserNameEntry.Text, PasswordEntry.Text);
 
 				if (user != null)
 				{
 					CrossService.Toast.Info("Učitavanje. . .");
+					DependencyService.Get<IUserAccount>().SaveUser(user);
 				} else {
 					CrossService.Toast.Info("Pogrešno korisničko ime ili lozinka.");
 				}
