@@ -42,16 +42,6 @@
 					x:Name="NewsType">
 				</Picker>
 			</StackLayout>
-			<StackLayout
-				Orientation="Horizontal">
-				<Label
-					Text="Kategorija vesti:">
-				</Label>
-				<Picker
-					HorizontalOptions="FillAndExpand"
-					x:Name="NewsTypePicker">
-				</Picker>
-			</StackLayout>
 			<Label
 				Text="Opis vesti:">
 			</Label>
