@@ -12,6 +12,11 @@ namespace KMMOpenNews
 			InitializeComponent();
 			BindingContext = new AddNewsPageViewModel(this);
 
+			NewsType.Items.Add("POLITIKA");
+			NewsType.Items.Add("DRUŠTVO");
+
+			NewsType.SelectedIndex = 0;
+
 		}
 	}
 }

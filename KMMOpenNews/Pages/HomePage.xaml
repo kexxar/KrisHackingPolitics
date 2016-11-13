@@ -65,7 +65,7 @@
 					BackgroundColor="Black"
 					FontSize="12"
 					FontAttributes="Bold"
-					Text="HRONIKA">
+					Text="FOTO">
 				</Button>
 			</StackLayout>
 			<ScrollView>
