@@ -4,7 +4,7 @@ using Xamarin.Forms;
 [assembly: Dependency(typeof(KMMOpenNews.Droid.DependencyServices.Toast))]
 namespace KMMOpenNews.Droid.DependencyServices
 {
-	public class Toast
+	public class Toast : IToast
 	{
 		/// <summary>
 		/// Show info toast with the supplied message

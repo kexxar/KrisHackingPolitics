@@ -4,21 +4,27 @@
 		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
 		x:Class="KMMOpenNews.HomePage">
 		<StackLayout
-			Padding="5,5,5,5"
+			Padding="10,10,10,10"
 			HorizontalOptions="CenterAndExpand"
 			Orientation="Vertical"
 			VerticalOptions="FillAndExpand">
 
 <!--	App logo and name-->
+			<Image
+				Source="logo"
+				WidthRequest="100"
+				HeightRequest="100">
+			</Image>
 			<Label
 				HorizontalOptions="CenterAndExpand"
-				Text="KMMOpenNews"
+				Text="obJavi!"
+				FontAttributes="Bold"
 				FontSize="30">
 			</Label>
 
 <!--		News panel-->
 			<StackLayout
-				Padding="5"
+				Padding="1"
 				HorizontalOptions="CenterAndExpand"
 				Orientation="Horizontal">
 				<Button
@@ -27,8 +33,9 @@
 					WidthRequest="80"
 					HeightRequest="40"
 					BackgroundColor="#4925FF"
-					FontSize="10"
-					Text="NEW">
+					FontSize="12"
+					FontAttributes="Bold"
+					Text="NOVO">
 				</Button>
 				<Button
 					x:Name="Politics"
@@ -36,8 +43,9 @@
 					WidthRequest="80"
 					HeightRequest="40"
 					BackgroundColor="#FF530D"
-					FontSize="10"
-					Text="POLITICS">
+					FontSize="12"
+					FontAttributes="Bold"
+					Text="POLITIKA">
 				</Button>
 				<Button
 					x:Name="Society"
@@ -45,8 +53,9 @@
 					WidthRequest="80"
 					HeightRequest="40"
 					BackgroundColor="#22E869"
-					FontSize="10"
-					Text="SOCIETY">
+					FontSize="12"
+					FontAttributes="Bold"
+					Text="DRUŠTVO">
 				</Button>
 				<Button
 					x:Name="Chronicle"
@@ -54,10 +63,12 @@
 				    WidthRequest="80"
 					HeightRequest="40"
 					BackgroundColor="Black"
-					FontSize="10"
-					Text="CHRONICLE">
+					FontSize="12"
+					FontAttributes="Bold"
+					Text="HRONIKA">
 				</Button>
 			</StackLayout>
+			<ScrollView>
 <!--			Top news panel-->
 			<StackLayout
 				Padding="5"
@@ -181,6 +192,7 @@
 			</Image>
 
 			</StackLayout>
+				</ScrollView>
 	
 		</StackLayout>
 	

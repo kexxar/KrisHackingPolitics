@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+		xmlns="http://xamarin.com/schemas/2014/forms" 
+		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+		x:Class="KMMOpenNews.LoginPage">
+	<ContentPage.Content>
+		<StackLayout
+			Orientation="Vertical"
+			HorizontalOptions="CenterAndExpand"
+			VerticalOptions="CenterAndExpand"
+			Padding="5">
+			<!--	App logo and name-->
+			<Image
+				Source="logo"
+				WidthRequest="100"
+				HeightRequest="100">
+			</Image>
+			<Label
+				HorizontalOptions="CenterAndExpand"
+				Text="obJavi!"
+				FontAttributes="Bold"
+				FontSize="30">
+			</Label>
+				<Label
+					Text="'Journalism is printing what someone else does not want printed. Everything else is public relations.' -  George Orwell"
+					FontFamily="Serif"
+					HorizontalTextAlignment="Center">
+			    </Label>
+			<StackLayout
+				Orientation="Horizontal"
+				HorizontalOptions="CenterAndExpand"
+				VerticalOptions="CenterAndExpand"
+				Padding="5">
+					<Label
+						WidthRequest="150"
+						Text="Korisničko ime:">
+				    </Label>
+				    <Entry
+						x:Name="UserNameEntry"
+						WidthRequest="150"
+						Placeholder="korisničko ime">
+				    </Entry>
+			</StackLayout>
+			<StackLayout
+				Orientation="Horizontal"
+				HorizontalOptions="CenterAndExpand"
+				VerticalOptions="CenterAndExpand"
+				Padding="5">
+				   <Label
+					  WidthRequest="150"
+					  Text="Lozinka:">
+				   </Label>
+				   <Entry
+						x:Name="PasswordEntry"
+						WidthRequest="150"
+						IsPassword="true">
+				    </Entry>
+			</StackLayout>			
+			<Button
+				x:Name="SignIn"	
+				Text="ULOGUJ SE">
+			</Button>
+			<Button
+				x:Name="Register"
+				Text="REGISTRUJ SE">
+			</Button>
+		</StackLayout>
+	</ContentPage.Content>
+</ContentPage>

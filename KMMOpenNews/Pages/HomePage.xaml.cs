@@ -18,7 +18,7 @@ namespace KMMOpenNews
 			tapGestureRecognizer.Tapped += (s, e) =>
 			{
 				Console.WriteLine("Image clicked.");
-				this.Navigation.PushAsync(new RegistartionPage());
+				this.Navigation.PushAsync(new LoginPage());
 			};
 
 			Add.GestureRecognizers.Add(tapGestureRecognizer);
