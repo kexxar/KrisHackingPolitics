@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>KMMOpenNews.Droid</RootNamespace>
     <AssemblyName>KMMOpenNews.Droid</AssemblyName>
-    <TargetFrameworkVersion>v7.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
     <AndroidApplication>True</AndroidApplication>
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <AndroidResgenClass>Resource</AndroidResgenClass>
@@ -113,6 +113,7 @@
     <AndroidResource Include="Resources\drawable\feather.png" />
     <AndroidResource Include="Resources\drawable\star.png" />
     <AndroidResource Include="Resources\drawable\logo.png" />
+    <AndroidResource Include="Resources\drawable\user.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DependencyService\" />

@@ -8,6 +8,19 @@
 			HorizontalOptions="CenterAndExpand"
 			Orientation="Vertical"
 			VerticalOptions="FillAndExpand">
+			<StackLayout
+				Orientation="Vertical"
+				HorizontalOptions="EndAndExpand">
+			<Image
+				x:Name="UserLogo"
+				Source="user"
+				WidthRequest="20"
+				HeightRequest="20">
+			</Image>
+			<Label
+				x:Name="UserName">
+			</Label>
+			</StackLayout>
 
 <!--	App logo and name-->
 			<Image

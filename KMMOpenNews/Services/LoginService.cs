@@ -47,6 +47,19 @@ namespace KMMOpenNews
 
 					//return user;
 					//}
+
+					var requestUrl1 = "http://10.29.20.210:3000/api/Account/UserInfo";
+
+					client.DefaultRequestHeaders.Add("Authorization", "Bearer " + u.access_token);
+
+					var resp1 = await client.GetAsync(requestUrl1); 
+
+					var cont1 = await resp1.Content.ReadAsStreamAsync();
+
+					var u1 = JsonConvert.DeserializeObject<User>(cont);
+
+					u.UserTypeId = u1.UserTypeId;
+
 					return u;
 
 				}
