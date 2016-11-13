@@ -74,6 +74,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Interface\ILoginService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interface\IRegistrationService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\RegistrationService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interface\IAddNews.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\AddNewsService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Pages\" />

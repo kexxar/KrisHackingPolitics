@@ -35,6 +35,16 @@
 			<StackLayout
 				Orientation="Horizontal">
 				<Label
+					Text="Kategorija:">
+				</Label>
+				<Picker
+					HorizontalOptions="FillAndExpand"
+					x:Name="NewsType">
+				</Picker>
+			</StackLayout>
+			<StackLayout
+				Orientation="Horizontal">
+				<Label
 					Text="Kategorija vesti:">
 				</Label>
 				<Picker
