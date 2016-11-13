@@ -9,6 +9,11 @@ namespace KMMOpenNews
 	{
 		public string vest;
 
+		private Entry Search { get {
+				return InstitutionSearch;
+			} 
+		}
+
 		public AddNewsPage()
 		{
 			InitializeComponent();
@@ -40,6 +45,26 @@ namespace KMMOpenNews
 					CrossService.Toast.Info("Popunite zahtevana polja.");
 				}
 			});
+
+			//var entryTap = new TapGestureRecognizer {
+			//	Command = new Command(() => {
+			//		//Navigation.PushAsync();
+			//		MessagingCenter.Subscribe<string>(this, "searchDone", (obj) => {
+			//			Search.Text = obj;
+			//			MessagingCenter.Unsubscribe<string>(this, "searchDone");
+			//		});
+			//		Navigation.PushAsync(new SearchInstitution());
+			//	})
+			//};
+			//Search.GestureRecognizers.Add(entryTap);
+			Search.Focused += (sender, e) => { 
+				MessagingCenter.Subscribe<string>(this, "searchDone", (obj) => {
+					Search.Text = obj;
+					MessagingCenter.Unsubscribe<string>(this, "searchDone");
+				});
+				Navigation.PushAsync(new SearchInstitution());
+				Search.Unfocus();
+			};
 		}
 	}
 }

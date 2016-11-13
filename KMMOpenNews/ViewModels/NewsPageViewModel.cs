@@ -56,11 +56,17 @@ namespace KMMOpenNews
 
 		}
 
-		private async Task AddScore(NewsPost post, int score) { 
+		private async Task AddScore(NewsPost post, int score) {
+			var token = DependencyService.Get<IUserAccount>().GetCurrentToken();
+			if (token == null) {
+				CrossService.Toast.Info("Morate se prvo prijaviti");
+				return;
+			}
 			ButtonsEnabled = false;
-			var success = await DependencyService.Get<IAddScore>().AddScore(post, 1);
-			if (!success) {
+			var message = await DependencyService.Get<IAddScore>().AddScore(post, score);
+			if (!message.Equals("OK")) {
 				ButtonsEnabled = true;
+				CrossService.Toast.Info(message);
 			}
 		}
 	}

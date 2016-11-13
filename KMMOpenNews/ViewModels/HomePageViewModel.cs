@@ -42,23 +42,25 @@ namespace KMMOpenNews
 				//TODO get news from server
 				LatestNews = await DependencyService.Get<IFetchNewsService>().FetchLatestNews();
 				Device.BeginInvokeOnMainThread(() => {
-					var news = LatestNews[0];
-					TopTitle = news.Title;
-					TopDescription = news.Body.Substring(0, news.Body.Length > 50 ? 50 : news.Body.Length - 1);
-					Rate1 = news.TotalScore.ToString();
-					Date1 = news.NewsDate.ToString();
+					if (LatestNews.Count > 2) {
+						var news = LatestNews[0];
+						TopTitle = news.Title;
+						TopDescription = FormatBody(news.Body);
+						Rate1 = news.TotalScore.ToString();
+						Date1 = news.NewsDate.ToString();
 
-					news = LatestNews[1];
-					TopTitle1 = news.Title;
-					TopDescription1 = news.Body.Substring(0, news.Body.Length > 50 ? 50 : news.Body.Length - 1);
-					Rate2 = news.TotalScore.ToString();
-					Date2 = news.NewsDate.ToString();
+						news = LatestNews[1];
+						TopTitle1 = news.Title;
+						TopDescription1 = FormatBody(news.Body);
+						Rate2 = news.TotalScore.ToString();
+						Date2 = news.NewsDate.ToString();
 
-					news = LatestNews[2];
-					TopTitle2 = news.Title;
-					TopDescription2 = news.Body.Substring(0, news.Body.Length > 50 ? 50 : news.Body.Length - 1);
-					Rate3 = news.TotalScore.ToString();
-					Date3 = news.NewsDate.ToString();
+						news = LatestNews[2];
+						TopTitle2 = news.Title;
+						TopDescription2 = FormatBody(news.Body);
+						Rate3 = news.TotalScore.ToString();
+						Date3 = news.NewsDate.ToString();
+					}
 				});
 			});
 
@@ -81,6 +83,14 @@ namespace KMMOpenNews
 
 			TopTitle2 = "ewrrretrtrtretvc  dsf";
 			TopDescription2 = "dsfagasfhhhfj fdgghjgnhdfgg  dfggdfgghs dsfgertdfv edfsgsdf fsadgfdfsgdf dfbd";
+		}
+
+		private static string FormatBody(string body) {
+			if (body.Length > 50) {
+				return body.Substring(0, 50) + "...";
+			} else {
+				return body;
+			}
 		}
 	}
 }

@@ -29,6 +29,9 @@
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\LoginPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\SearchInstitution.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
@@ -86,6 +89,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Messages\UserStatusMessage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interface\IAddScore.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\AddScoreService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\SearchInstitution.xaml.cs">
+      <DependentUpon>SearchInstitution.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\SearchViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Pages\" />

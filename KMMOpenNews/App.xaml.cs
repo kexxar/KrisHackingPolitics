@@ -10,7 +10,7 @@ namespace KMMOpenNews
 			InitializeComponent();
 
 			MainPage = new NavigationPage(new HomePage());
-			//MainPage = new AddNewsPage();
+			//MainPage = new NavigationPage(new AddNewsPage());
 			//MainPage = new NavigationPage(new KMMOpenNewsPage());
 		}
 

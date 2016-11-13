@@ -32,6 +32,7 @@ namespace KMMOpenNews
 			NewsList.ItemSelected += (sender, e) => {
 				//TODO 
 				var news = e.SelectedItem as NewsPost;
+				NewsList.SelectedItem = null;
 				if (news != null) {
 					Page.Navigation.PushAsync(new NewsPage(news));
 				}

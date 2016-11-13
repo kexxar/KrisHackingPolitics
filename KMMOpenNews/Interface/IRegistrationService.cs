@@ -5,6 +5,6 @@ namespace KMMOpenNews
 {
 	public interface IRegistrationService
 	{
-		Task<bool> RegistrationUser(string UserName, string Email, int UserTypeId, string Password, string ConfirmPassword);
+		Task<string> RegistrationUser(string UserName, string Email, int UserTypeId, string Password, string ConfirmPassword);
 	}
 }

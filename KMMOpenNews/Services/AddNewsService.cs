@@ -26,7 +26,12 @@ namespace KMMOpenNews
 					client.DefaultRequestHeaders.Accept.Clear();
 					client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-					var parameters = new Dictionary<string, string> { { "Title", Title }, { "NewsType", NewsType }, { "Body", Desctipiton }};
+					var parameters = new Dictionary<string, string> {
+						{ "Title", Title },
+						{ "NewsType", NewsType },
+						{ "Body", Desctipiton },
+						{ "NewsDate", DateTime.Now.ToString()}
+					};
 					var json = JsonConvert.SerializeObject(parameters);
 
 					var resp = await client.PostAsync(requestUrl, new StringContent(json, Encoding.UTF8, "application/json"));

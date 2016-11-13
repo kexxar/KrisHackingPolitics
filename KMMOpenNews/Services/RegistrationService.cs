@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using KMMOpenNews;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Xamarin.Forms;
 
 [assembly: Dependency(typeof(RegistrationService))]
@@ -14,7 +15,7 @@ namespace KMMOpenNews
 	public class RegistrationService : IRegistrationService
 	{
 
-		public Task<bool> RegistrationUser(string UserName, string Email, int UserTypeId, string Password, string ConfirmPassword)
+		public Task<string> RegistrationUser(string UserName, string Email, int UserTypeId, string Password, string ConfirmPassword)
 		{
 			return Task.Run(async() => {
 				try
@@ -41,24 +42,50 @@ namespace KMMOpenNews
 					//var resp = await client.PostAsync(requestUrl, new StringContent(json), "application/json");
 					var resp = await client.PostAsync(requestUrl, new StringContent(json, Encoding.UTF8, "application/json"));
 
-					if (resp.StatusCode == System.Net.HttpStatusCode.OK)
-					{
-						return true;
+					if (resp.StatusCode == System.Net.HttpStatusCode.OK) {
+						return "OK";
 					}
-					else {
-						return false;
+					var content = await resp.Content.ReadAsStringAsync();
+					var o = JObject.Parse(content);
+					var message = FormatReturnMessage(o);
+					if (message != null) {
+						return message;
 					}
-					//}
+					var token = o["Message"];
+					if (token != null) {
+						return token.ToString();
+					} else {
+						return "";
+					}
 
 				}
 				catch (Exception e) {
-
 					Console.WriteLine(e);
-					return false;
+					return e.Message;
 				}
 			
 			});
 
+		}
+
+		private static string FormatReturnMessage(JObject o) {
+			var messages = new List<string>();
+			if (o["ModelState"] != null) {
+				var state = o["ModelState"].First;
+				foreach (var item in state) {
+					var messageArray = item as JArray;
+					messages.Add(messageArray.First.ToString());
+				}
+			}
+			if (messages.Count > 0) {
+				var msg = "";
+				foreach (var m in messages) {
+					msg += m + "\n";
+				}
+				msg = msg.TrimEnd(new char[] { '\n', '\t' });
+				return msg;
+			}
+			return null;
 		}
 	}
 }

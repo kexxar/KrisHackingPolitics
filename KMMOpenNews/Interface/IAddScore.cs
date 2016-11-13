@@ -5,6 +5,6 @@ namespace KMMOpenNews
 {
 	public interface IAddScore
 	{
-		Task<bool> AddScore(NewsPost post, int score);
+		Task<string> AddScore(NewsPost post, int score);
 	}
 }

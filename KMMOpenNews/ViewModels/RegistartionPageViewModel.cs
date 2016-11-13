@@ -63,8 +63,8 @@ namespace KMMOpenNews
 					UserType = 3;
 				}
 
-				var isRegister =  await DependencyService.Get<IRegistrationService>().RegistrationUser(UserNameEntry.Text, EmailEntry.Text, UserType, PasswordEntry.Text, PasswordConfirmationEntry.Text);
-				if (isRegister)
+				var message =  await DependencyService.Get<IRegistrationService>().RegistrationUser(UserNameEntry.Text, EmailEntry.Text, UserType, PasswordEntry.Text, PasswordConfirmationEntry.Text);
+				if (message.Equals("OK"))
 				{
 
 					CrossService.Toast.Info("Učitavanje. . .");
@@ -72,7 +72,7 @@ namespace KMMOpenNews
 					Page.Navigation.PopAsync();
 				}
 				else {
-					CrossService.Toast.Info("Lozinka se ne poklapa.");
+					CrossService.Toast.Info(message);
 				}
 
 
