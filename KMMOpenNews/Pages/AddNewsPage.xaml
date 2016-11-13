@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+		xmlns="http://xamarin.com/schemas/2014/forms" 
+		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+		x:Class="KMMOpenNews.AddNewsPage">
+	<ContentPage.Content>
+		<StackLayout
+			Padding="5"
+			Orientation="Vertical">
+			<StackLayout
+				Orientation="Horizontal">
+				<Label
+					Text="Title:">
+				</Label>
+				<Entry
+					HorizontalOptions="FillAndExpand"
+					x:Name="Title"
+					Placeholder="Add article title">
+				</Entry>
+			</StackLayout>
+			<StackLayout
+				Orientation="Horizontal">
+				<Label
+					Text="News type:">
+				</Label>
+				<Picker
+					HorizontalOptions="FillAndExpand"
+					x:Name="NewsTypePicker">
+				</Picker>
+			</StackLayout>
+			<Label
+				Text="Article description:">
+			</Label>
+			<ScrollView>
+				<Entry
+					x:Name="ArticleDescription"
+					HorizontalTextAlignment="Start"
+					HeightRequest="100"
+					HorizontalOptions="FillAndExpand"
+					VerticalOptions="StartAndExpand">
+				</Entry>
+			</ScrollView>
+			<Label
+				Text="News references:">
+			</Label>
+			<StackLayout
+				Orientation="Horizontal">
+				<Label
+					Text="Reference:">
+				</Label>
+				<Entry
+					x:Name="FirstReference"
+					HorizontalOptions="FillAndExpand">
+				</Entry>
+			</StackLayout>
+			<StackLayout
+				Orientation="Horizontal">
+				<Label
+					Text="Reference:">
+				</Label>
+				<Entry
+					x:Name="SecondReference"
+					HorizontalOptions="FillAndExpand">
+				</Entry>
+			</StackLayout>
+			<StackLayout
+				Orientation="Horizontal">
+				<Label
+					Text="Goverment Institution:">
+				</Label>
+				<Entry
+					x:Name="InstitutionSearch"
+					HorizontalOptions="FillAndExpand">
+				</Entry>
+			</StackLayout>
+			<Button
+				Text="Add"
+				x:Name="Add">
+			</Button>
+		</StackLayout>
+	</ContentPage.Content>
+</ContentPage>
