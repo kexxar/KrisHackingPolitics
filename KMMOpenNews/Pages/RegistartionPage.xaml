@@ -10,6 +10,19 @@
 				HorizontalOptions="CenterAndExpand"
 				VerticalOptions="CenterAndExpand">
 
+			<!--	App logo and name-->
+			<Image
+				Source="logo"
+				WidthRequest="100"
+				HeightRequest="100">
+			</Image>
+			<Label
+				HorizontalOptions="CenterAndExpand"
+				Text="obJavi!"
+				FontAttributes="Bold"
+				FontSize="30">
+			</Label>
+				
 				<Label
 					Text="'Journalism is printing what someone else does not want printed. Everything else is public relations.' -  George Orwell"
 					FontFamily="Serif"
@@ -24,7 +37,7 @@
 					Padding="5">
 					<Label
 						WidthRequest="150"
-						Text="Sign up as:">
+						Text="Uloguj se kao:">
 					</Label>
 				    <Picker
 						x:Name="UserTypePicker"
@@ -38,12 +51,12 @@
 					Padding="5">
 				    <Label
 						WidthRequest="150"
-						Text="User name:">
+						Text="Korisničko ime:">
 				    </Label>
 				    <Entry
 						x:Name="UserNameEntry"
 						WidthRequest="150"
-						Placeholder="user name">
+						Placeholder="korisničko ime">
 				    </Entry>
 				</StackLayout>
 				<StackLayout
@@ -69,7 +82,7 @@
 					Padding="5">
 				    <Label
 						WidthRequest="150"
-						Text="Password:">
+						Text="Lozinka:">
 				    </Label>
 				    <Entry
 						x:Name="PasswordEntry"
@@ -85,7 +98,7 @@
 					Padding="5">
 				    <Label
 						WidthRequest="150"
-						Text="Confirm password:">
+						Text="Potvrdi lozinku:">
 				    </Label>
 				    <Entry
 						x:Name="PasswordConfirmationEntry"
@@ -93,17 +106,15 @@
 						IsPassword="true">
 				    </Entry>
 				</StackLayout>	
+
 				<StackLayout
-					Padding="10"
-					HorizontalOptions="CenterAndExpand"
-					VerticalOptions="CenterAndExpand">
+					Padding="10">
 				<Button
 					x:Name="SingUpButton"
 					Command="{Binding SingUpClicked}"	
-					Text="SIGN UP">
+					Text="REGISTRUJ SE">
 				</Button>
 				</StackLayout>
-
 		</StackLayout>
 		
 	</ContentPage.Content>

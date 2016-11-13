@@ -4,11 +4,13 @@ namespace KMMOpenNews
 {
 	public partial class App : Application
 	{
+		public static string AppName = "oBjavi";
 		public App()
 		{
 			InitializeComponent();
 
 			MainPage = new NavigationPage(new HomePage());
+			//MainPage = new NavigationPage(new AddNewsPage());
 			//MainPage = new NavigationPage(new KMMOpenNewsPage());
 		}
 

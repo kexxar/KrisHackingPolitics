@@ -3,7 +3,7 @@
 		xmlns="http://xamarin.com/schemas/2014/forms" 
 		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
 		x:Class="KMMOpenNews.NewsListPage">
-	<ContentPage.Content>
+	<StackLayout VerticalOptions = "FillAndExpand" HorizontalOptions="FillAndExpand">
 		<Label
 			x:Name="NewsType"
 			Text="{Binding NewsType}"
@@ -11,6 +11,8 @@
 		</Label>
 		<ListView
 			x:Name="NewsList"
+				HasUnevenRows="true"
+				ItemsSource="{Binding NewsItems}"
 			HorizontalOptions="FillAndExpand"
 			VerticalOptions="FillAndExpand">
 			<ListView.ItemTemplate>
@@ -29,21 +31,21 @@
 									HeightRequest="30"
 									Source="star.png">
 								</Image>
-								<Lable
+								<Label
 									x:Name="Rate"
-									Text="{Binding Rate}">
-								</Lable>
+									Text="{Binding TotalScore}">
+								</Label>
 							</StackLayout>
 							<Label
 								x:Name="Description"
 								HorizontalOptions="FillAndExpand"
 								HeightRequest="100"
-								Text="{Binding Description}">
+								Text="{Binding Body}">
 							</Label>
 						</StackLayout>
 					</ViewCell>
 				</DataTemplate>
 			</ListView.ItemTemplate>
 		</ListView>
-	</ContentPage.Content>
+	</StackLayout>
 </ContentPage>

@@ -2074,11 +2074,17 @@ namespace KMMOpenNews.Droid
 			// aapt resource value: 0x7f020090
 			public const int icon = 2130837648;
 			
-			// aapt resource value: 0x7f020092
-			public const int notification_template_icon_bg = 2130837650;
-			
 			// aapt resource value: 0x7f020091
-			public const int star = 2130837649;
+			public const int logo = 2130837649;
+			
+			// aapt resource value: 0x7f020094
+			public const int notification_template_icon_bg = 2130837652;
+			
+			// aapt resource value: 0x7f020092
+			public const int star = 2130837650;
+			
+			// aapt resource value: 0x7f020093
+			public const int user = 2130837651;
 			
 			static Drawable()
 			{

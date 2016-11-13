@@ -4,21 +4,40 @@
 		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
 		x:Class="KMMOpenNews.HomePage">
 		<StackLayout
-			Padding="5,5,5,5"
+			Padding="10,10,10,10"
 			HorizontalOptions="CenterAndExpand"
 			Orientation="Vertical"
 			VerticalOptions="FillAndExpand">
+			<StackLayout
+				Orientation="Vertical"
+				HorizontalOptions="EndAndExpand">
+			<Image
+				x:Name="UserLogo"
+				Source="user"
+				WidthRequest="20"
+				HeightRequest="20">
+			</Image>
+			<Label
+				x:Name="UserName">
+			</Label>
+			</StackLayout>
 
 <!--	App logo and name-->
+			<Image
+				Source="logo"
+				WidthRequest="100"
+				HeightRequest="100">
+			</Image>
 			<Label
 				HorizontalOptions="CenterAndExpand"
-				Text="KMMOpenNews"
+				Text="obJavi!"
+				FontAttributes="Bold"
 				FontSize="30">
 			</Label>
 
 <!--		News panel-->
 			<StackLayout
-				Padding="5"
+				Padding="1"
 				HorizontalOptions="CenterAndExpand"
 				Orientation="Horizontal">
 				<Button
@@ -27,8 +46,9 @@
 					WidthRequest="80"
 					HeightRequest="40"
 					BackgroundColor="#4925FF"
-					FontSize="10"
-					Text="NEW">
+					FontSize="12"
+					FontAttributes="Bold"
+					Text="NOVO">
 				</Button>
 				<Button
 					x:Name="Politics"
@@ -36,8 +56,9 @@
 					WidthRequest="80"
 					HeightRequest="40"
 					BackgroundColor="#FF530D"
-					FontSize="10"
-					Text="POLITICS">
+					FontSize="12"
+					FontAttributes="Bold"
+					Text="POLITIKA">
 				</Button>
 				<Button
 					x:Name="Society"
@@ -45,8 +66,9 @@
 					WidthRequest="80"
 					HeightRequest="40"
 					BackgroundColor="#22E869"
-					FontSize="10"
-					Text="SOCIETY">
+					FontSize="12"
+					FontAttributes="Bold"
+					Text="DRUŠTVO">
 				</Button>
 				<Button
 					x:Name="Chronicle"
@@ -54,72 +76,37 @@
 				    WidthRequest="80"
 					HeightRequest="40"
 					BackgroundColor="Black"
-					FontSize="10"
-					Text="CHRONICLE">
+					FontSize="12"
+					FontAttributes="Bold"
+					Text="FOTO">
 				</Button>
 			</StackLayout>
+			<ScrollView>
 <!--			Top news panel-->
-			<StackLayout
-				Padding="5"
-				Orientation="Vertical">
-<!--			Most popular news-->
 				<StackLayout
-					x:Name="TopNews1"
-					HorizontalOptions="CenterAndExpand"
-					VerticalOptions="CenterAndExpand"
-					Padding="5">
-				<Label
-					FontSize="10"	
-					Text="{Binding Date1}">
-				</Label>
-			    <Label
-					HorizontalOptions="FillAndExpand"
-					FontSize="20"
-					HorizontalTextAlignment="Center"
-					Text="{Binding TopTitle}">
-				</Label>
-			    <Label
-					HorizontalOptions="FillAndExpand"
-					VerticalOptions="FillAndExpand"
-					VerticalTextAlignment="Center"	
-					Text="{Binding TopDescription}">
-				</Label>
-				<StackLayout
-					Orientation="Vertical"
-					HorizontalOptions="End"
-					Padding="5">
-					<Image
-						Source="star.png"
-						HeightRequest="30"
-						WidthRequest="30">
-					</Image>
-					<Label
-						Text="{Binding Rate1}">
-					</Label>
-				</StackLayout>
-
-			    </StackLayout>
-<!--			Less popular news-->
-			    <StackLayout
-					Orientation="Horizontal">
+					Padding="5"
+					Orientation="Vertical">
+	<!--			Most popular news-->
 					<StackLayout
-						x:Name="TopNews2"
+						x:Name="TopNews1"
+						HorizontalOptions="FillAndExpand"
+						VerticalOptions="CenterAndExpand"
 						Padding="5">
-						<Label
-							FontSize="10"
-							Text="{Binding Date2}">
-						</Label>					
-						<Label
-							HorizontalOptions="FillAndExpand"
-							HorizontalTextAlignment="Center"
-							FontSize="20"
-					    	Text="{Binding TopTitle1}">
-						</Label>
-			   		 <Label
+					<Label
+						FontSize="10"	
+						Text="{Binding Date1}">
+					</Label>
+				    <Label
+						HorizontalOptions="FillAndExpand"
+						FontSize="20"
+						HorizontalTextAlignment="Center"
+						Text="{Binding TopTitle}">
+					</Label>
+				    <Label
 						HorizontalOptions="FillAndExpand"
 						VerticalOptions="FillAndExpand"
 						VerticalTextAlignment="Center"	
-						Text="{Binding TopDescription1}">
+						Text="{Binding TopDescription}">
 					</Label>
 					<StackLayout
 						Orientation="Vertical"
@@ -131,59 +118,94 @@
 							WidthRequest="30">
 						</Image>
 						<Label
-							Text="{Binding Rate2}">
+							Text="{Binding Rate1}">
 						</Label>
 					</StackLayout>
-					</StackLayout>
 
-					<StackLayout
-						x:Name="TopNews3"
-						Padding="5">
-						<Label
-							FontSize="10"
-							Text="{Binding Date3}">
-						</Label>					
-						<Label
+				    </StackLayout>
+	<!--			Less popular news-->
+				    <StackLayout
+						Orientation="Horizontal">
+						<StackLayout
 							HorizontalOptions="FillAndExpand"
-							HorizontalTextAlignment="Center"
-							FontSize="20"
-					    	Text="{Binding TopTitle2}">
-						</Label>
-			   		 <Label
-						HorizontalOptions="FillAndExpand"
-						VerticalOptions="FillAndExpand"
-						VerticalTextAlignment="Center"
-						Text="{Binding TopDescription2}">
-					</Label>
-					<StackLayout
-						Orientation="Vertical"
-						HorizontalOptions="End"
-						Padding="5">
-						<Image
-							Source="star.png"
-							HeightRequest="30"
-							WidthRequest="30">
-						</Image>
-						<Label
-							Text="{Binding Rate3}">
-						</Label>
-					</StackLayout>
-					</StackLayout>
-					
-				
-				</StackLayout>
-<!--			Add News-->
-			<Image
-			  x:Name="Add"
-			  HorizontalOptions="End"				
-			  WidthRequest="50"
-			  HeightRequest="50">
-			</Image>
+							x:Name="TopNews2"
+							Padding="5">
+							<Label
+								FontSize="10"
+								Text="{Binding Date2}">
+							</Label>					
+							<Label
+								HorizontalOptions="FillAndExpand"
+								HorizontalTextAlignment="Center"
+								FontSize="20"
+						    	Text="{Binding TopTitle1}">
+							</Label>
+					   		 <Label
+								HorizontalOptions="FillAndExpand"
+								VerticalOptions="FillAndExpand"
+								VerticalTextAlignment="Center"	
+								Text="{Binding TopDescription1}">
+							</Label>
+							<StackLayout
+								Orientation="Vertical"
+								HorizontalOptions="End"
+								Padding="5">
+								<Image
+									Source="star.png"
+									HeightRequest="30"
+									WidthRequest="30">
+								</Image>
+								<Label
+									Text="{Binding Rate2}">
+								</Label>
+							</StackLayout>
+						</StackLayout>
 
-			</StackLayout>
+						<StackLayout
+							HorizontalOptions="FillAndExpand"
+							x:Name="TopNews3"
+							Padding="5">
+							<Label
+								FontSize="10"
+								Text="{Binding Date3}">
+							</Label>					
+							<Label
+								HorizontalOptions="FillAndExpand"
+								HorizontalTextAlignment="Center"
+								FontSize="20"
+						    	Text="{Binding TopTitle2}">
+							</Label>
+					   		 <Label
+								HorizontalOptions="FillAndExpand"
+								VerticalOptions="FillAndExpand"
+								VerticalTextAlignment="Center"
+								Text="{Binding TopDescription2}">
+							</Label>
+							<StackLayout
+								Orientation="Vertical"
+								HorizontalOptions="End"
+								Padding="5">
+								<Image
+									Source="star.png"
+									HeightRequest="30"
+									WidthRequest="30">
+								</Image>
+								<Label
+									Text="{Binding Rate3}">
+								</Label>
+							</StackLayout>
+						</StackLayout>
+					</StackLayout>
+	<!--			Add News-->
+					<Image
+					  x:Name="Add"
+					  HorizontalOptions="End"				
+					  WidthRequest="50"
+					  HeightRequest="50">
+					</Image>
+
+				</StackLayout>
+			</ScrollView>
 	
 		</StackLayout>
-	
-	<ContentPage.Content>
-	</ContentPage.Content>
 </ContentPage>

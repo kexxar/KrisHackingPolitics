@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="KMMOpenNews.SearchInstitution">
+	<StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+		<Entry 
+			x:Name="SearchEntry" 
+			Text = "{Binding SearchText}" 
+			Placeholder="Unsite kriterijum pretrage" 
+			HorizontalOptions="FillAndExpand"
+			HeightRequest="30"/>
+		<ListView 
+				x:Name="SearchList"
+				ItemsSource="{Binding SearchItems}"
+				HorizontalOptions="FillAndExpand"
+				VerticalOptions="FillAndExpand">
+			<ListView.ItemTemplate>
+				<DataTemplate>
+					<ViewCell>
+						<Label Text="{Binding ShortText}" HorizontalOptions="FillAndExpand"/>
+					</ViewCell>
+				</DataTemplate>
+			</ListView.ItemTemplate>
+		</ListView>
+	</StackLayout>
+</ContentPage>

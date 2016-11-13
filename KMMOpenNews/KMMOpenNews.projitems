@@ -26,6 +26,12 @@
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\NewsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\LoginPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\SearchInstitution.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
@@ -62,6 +68,31 @@
       <DependentUpon>NewsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\NewsPageViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\User.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\LoginPage.xaml.cs">
+      <DependentUpon>LoginPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\LoginPageViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\LoginService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interface\ILoginService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interface\IRegistrationService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\RegistrationService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interface\IAddNews.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\AddNewsService.cs" />
+
+    <Compile Include="$(MSBuildThisFileDirectory)Interface\IUserAccount.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interface\IFetchNewsService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\NewsPost.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\UserScore.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\UserComment.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\FetchNewsService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Messages\UserStatusMessage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interface\IAddScore.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\AddScoreService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\SearchInstitution.xaml.cs">
+      <DependentUpon>SearchInstitution.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\SearchViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Pages\" />
@@ -70,5 +101,6 @@
     <Folder Include="$(MSBuildThisFileDirectory)Services\" />
     <Folder Include="$(MSBuildThisFileDirectory)Interface\" />
     <Folder Include="$(MSBuildThisFileDirectory)Cells\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Messages\" />
   </ItemGroup>
 </Project>

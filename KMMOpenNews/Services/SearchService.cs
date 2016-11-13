@@ -23,6 +23,8 @@ namespace KMMOpenNews
 					client.DefaultRequestHeaders.Accept.Clear();
 					client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
+					//client.DefaultRequestHeaders.Add("Authorization", "Bearer " + "token");
+
 					var uri = new Uri(requestUrl);
 
 					using (var response = await client.GetAsync(uri)) {

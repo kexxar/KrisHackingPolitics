@@ -25,5 +25,11 @@ namespace KMMOpenNews
 		public string Sediste { get; set; }
 		[JsonProperty(PropertyName="Obaveza informatora")]
 		public string ObavezaInformatora { get; set; }
+
+		public string ShortText { 
+			get {
+				return NazivOrgana;
+			}
+		}
 	}
 }
