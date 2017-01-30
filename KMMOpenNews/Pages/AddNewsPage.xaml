@@ -45,15 +45,14 @@
 			<Label
 				Text="Opis vesti:">
 			</Label>
-			<ScrollView>
+<!--			<ScrollView>-->
 				<Editor
 					x:Name="ArticleDescription"
-					HorizontalTextAlignment="Start"
+					Keyboard="Text"
 					HeightRequest="100"
-					HorizontalOptions="FillAndExpand"
-					VerticalOptions="StartAndExpand">
+					HorizontalOptions="FillAndExpand">
 				</Editor>
-			</ScrollView>
+<!--			</ScrollView>-->
 			<Label
 				Text="Izvori vesti">
 			</Label>

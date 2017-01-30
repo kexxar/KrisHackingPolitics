@@ -39,6 +39,7 @@ namespace KMMOpenNews
 				if (isAdded)
 				{
 					CrossService.Toast.Info("Uspesno ste dodali vest.");
+					MessagingCenter.Send("", "updateHome");
 					await this.Navigation.PopAsync();
 				}
 				else {

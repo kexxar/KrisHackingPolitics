@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+
 namespace KMMOpenNews
 {
 	public static class Constants
@@ -12,5 +14,12 @@ namespace KMMOpenNews
 		public static string GetSearchUrl(string query) {
 			return string.Format(SearchUrl, query);
 		}
+
+		public static Dictionary<string, string> Categories = new Dictionary<string,string> {
+			{ "new", "NOVO" },
+			{ "politics", "POLITIKA"},
+			{ "society", "DRUSTVO"},
+			{ "chronicle", "HRONIKA"}
+		};
 	}
 }

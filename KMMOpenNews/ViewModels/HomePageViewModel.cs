@@ -38,6 +38,34 @@ namespace KMMOpenNews
 		{
 			Page = page;
 
+			UpdateValues();
+
+			MessagingCenter.Subscribe<string>(this, "updateHome", (obj) => {
+				UpdateValues();
+			});
+
+			//TopNews1 = topNews1;
+
+			Date1 = DateTime.Today.ToString();
+			Date2 = DateTime.Today.ToString();
+			Date3 = DateTime.Today.ToString();
+
+			Rate1 = "4.7";
+			Rate2 = "4.2";
+			Rate3 = "3.1";
+
+
+			TopTitle = "ewrrretrtrtretvc  dsf";
+			TopDescription = "dsfagasfhhhfj fdgghjgnhdfgg  dfggdfgghs dsfgertdfv edfsgsdf fsadgfdfsgdf dfbd";
+
+			TopTitle1 = "ewrrretrtrtretvc  dsf";
+			TopDescription1 = "dsfagasfhhhfj fdgghjgnhdfgg  dfggdfgghs dsfgertdfv edfsgsdf fsadgfdfsgdf dfbd";
+
+			TopTitle2 = "ewrrretrtrtretvc  dsf";
+			TopDescription2 = "dsfagasfhhhfj fdgghjgnhdfgg  dfggdfgghs dsfgertdfv edfsgsdf fsadgfdfsgdf dfbd";
+		}
+
+		private void UpdateValues() { 
 			Task.Run(async () => {
 				//TODO get news from server
 				LatestNews = await DependencyService.Get<IFetchNewsService>().FetchLatestNews();
@@ -63,26 +91,6 @@ namespace KMMOpenNews
 					}
 				});
 			});
-
-			//TopNews1 = topNews1;
-
-			Date1 = DateTime.Today.ToString();
-			Date2 = DateTime.Today.ToString();
-			Date3 = DateTime.Today.ToString();
-
-			Rate1 = "4.7";
-			Rate2 = "4.2";
-			Rate3 = "3.1";
-
-
-			TopTitle = "ewrrretrtrtretvc  dsf";
-			TopDescription = "dsfagasfhhhfj fdgghjgnhdfgg  dfggdfgghs dsfgertdfv edfsgsdf fsadgfdfsgdf dfbd";
-
-			TopTitle1 = "ewrrretrtrtretvc  dsf";
-			TopDescription1 = "dsfagasfhhhfj fdgghjgnhdfgg  dfggdfgghs dsfgertdfv edfsgsdf fsadgfdfsgdf dfbd";
-
-			TopTitle2 = "ewrrretrtrtretvc  dsf";
-			TopDescription2 = "dsfagasfhhhfj fdgghjgnhdfgg  dfggdfgghs dsfgertdfv edfsgsdf fsadgfdfsgdf dfbd";
 		}
 
 		private static string FormatBody(string body) {

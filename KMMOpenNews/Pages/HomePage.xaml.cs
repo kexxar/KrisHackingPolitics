@@ -112,25 +112,25 @@ namespace KMMOpenNews
 
 			New.Command = new Command(() => {
 
-				this.Navigation.PushAsync(new NewsListPage("NEW", (arg) => arg.NewsDate));
+				this.Navigation.PushAsync(new NewsListPage("", (arg) => arg.NewsDate));
 			});
 
 			Politics.Command = new Command(() =>
 			{
 
-				this.Navigation.PushAsync(new NewsListPage("POLITICS"));
+				this.Navigation.PushAsync(new NewsListPage("politics"));
 			});
 
 			Society.Command = new Command(() =>
 			{
 
-				this.Navigation.PushAsync(new NewsListPage("SOCITEY"));
+				this.Navigation.PushAsync(new NewsListPage("society"));
 			});
 
 			Chronicle.Command = new Command(() =>
 			{
 
-				this.Navigation.PushAsync(new NewsListPage("CHRONICLE"));
+				this.Navigation.PushAsync(new NewsListPage("chronicle"));
 			});
 
 		}

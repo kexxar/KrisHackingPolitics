@@ -16,11 +16,11 @@ namespace KMMOpenNews
 		public string NewsType { get; set; }
 		public ObservableCollection<NewsPost> NewsItems { get; set; } = new ObservableCollection<NewsPost>();
 
-		public NewsListPageViewModel(NewsListPage page, string category, Func<NewsPost, object> sortOrder, ListView newsList)
+		public NewsListPageViewModel(NewsListPage page, string categoryKey, Func<NewsPost, object> sortOrder, ListView newsList)
 		{
 			Page = page;
 			NewsList = newsList;
-			NewsType = category.ToUpper();
+			NewsType = Constants.Categories[categoryKey];
 
 			//var customCell = new DataTemplate(typeof(CustomCell));
 
@@ -42,15 +42,16 @@ namespace KMMOpenNews
 				var fullList = await DependencyService.Get<IFetchNewsService>().FetchNewsList();
 				Console.WriteLine(fullList);
 				//TODO filtering disabled untill we have some news in specific categories
+				var category = Constants.Categories[categoryKey];
 				var filteredList = fullList.Where(x => x.NewsType.ToLower().Contains(category.ToLower())).ToList();
 				//NewsItems = fullList;
 				//fullList.OrderByDescending((arg) => arg.NewsDate);
 				if (sortOrder != null) {
-					var sorted = filteredList.OrderByDescending(sortOrder);
+					filteredList = filteredList.OrderByDescending(sortOrder).ToList();
 				}
 				Device.BeginInvokeOnMainThread(() => {
 					NewsItems.Clear();
-					fullList.ForEach(x => NewsItems.Add(x));
+					filteredList.ForEach(x => NewsItems.Add(x));
 				});
 			});
 

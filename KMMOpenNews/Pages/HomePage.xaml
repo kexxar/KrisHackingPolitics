@@ -81,7 +81,7 @@
 					Text="FOTO">
 				</Button>
 			</StackLayout>
-			<ScrollView>
+			<ScrollView WidthRequest="200">
 <!--			Top news panel-->
 				<StackLayout
 					Padding="5"
